@@ -50,6 +50,8 @@ and open the template in the editor.
 
 
         <?php
+        
+            echo 'esto es una prueba';
         ?>
     </body>
 </html>
