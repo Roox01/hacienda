@@ -1,0 +1,123 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/12/2015, 05:32:55 PM
+    Author     : BrianFernando
+*/
+
+#index{
+    background: url('../imagenes/fondo_1.jpg') center center fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login{
+    display: block;
+}
+
+#well_login{
+    width: 30%;
+    position: absolute;
+    right: 35%;
+    top: 30%;
+
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+
+    border-top-left-radius:5em;
+    border-bottom-right-radius: 5em;
+    -webkit-box-shadow: 6px 6px 15px #999;
+    -moz-box-shadow: 6px 6px 15px #999;
+    box-shadow: 6px 6px 15px #999;
+}
+
+#imagen_login{    
+    right: 35%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 30%;
+    height: 15%;
+}
+
+#head_usuario{
+    position: absolute;
+    left: 85%;    
+}
+
+#dropdownMenu1{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+#jumbotron{
+    background-color: transparent;
+}
+
+#cuadro_info{
+    padding: 2px;
+}
+
+#top_left\20 cuadro_info{
+    margin-right: 2px;
+    background-color: #004065;
+}
+
+#top_middle\20 cuadro_info{
+    background-image: url('../imagenes/breedings.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    margin-right: 2px;
+    margin-left: 2px;
+    background-color: #F16522;
+}
+
+#top_rigth\20 cuadro_info{
+    margin-left: 2px;    
+    background-color: #F16522;
+}
+
+
+.col-lg-4{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+#top_left\20 cuadro_info, #top_middle\20 cuadro_info, #top_rigth\20 cuadro_info{
+    padding: 5px;
+    color: white;
+    text-align: center;
+    padding-bottom: 32767px;
+    margin-bottom: -32767px;
+}
+
+#top_left\20 cuadro_info{
+
+}
+
+#top_middle\20 cuadro_info:hover,
+#top_rigth\20 cuadro_info:hover,
+#top_left\20 cuadro_info:hover{
+    opacity: 0.7;
+    
+    -webkit-transition-property:all;
+    -moz-transition-property:all;
+    -o-transition-property:all;
+    -ms-transition-property:all;
+    transition-property:all;
+
+    -webkit-transition-duration:0.5s;
+    -moz-transition-duration:0.5s;
+    -o-transition-duration:0.5s;
+    -ms-transition-duration:0.5s;
+    transition-duration:0.5s;
+    
+    -webkit-transition-timing-function:  ease;
+    -moz-transition-timing-function:  ease;
+    -o-transition-timing-function:  ease;
+    -ms-transition-timing-function:  ease;
+    transition-timing-function: ease;    
+}
