@@ -47,11 +47,6 @@ and open the template in the editor.
                 </form>
             </div>    
         </div>
-
-
-        <?php
         
-            echo 'esto es una prueba';
-        ?>
     </body>
 </html>
