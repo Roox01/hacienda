@@ -102,7 +102,7 @@ and open the template in the editor.
 #top_rigth\20 cuadro_info:hover,
 #top_left\20 cuadro_info:hover{
     opacity: 0.7;
-    
+
     -webkit-transition-property:all;
     -moz-transition-property:all;
     -o-transition-property:all;
@@ -114,10 +114,47 @@ and open the template in the editor.
     -o-transition-duration:0.5s;
     -ms-transition-duration:0.5s;
     transition-duration:0.5s;
-    
+
     -webkit-transition-timing-function:  ease;
     -moz-transition-timing-function:  ease;
     -o-transition-timing-function:  ease;
     -ms-transition-timing-function:  ease;
     transition-timing-function: ease;    
+}
+
+a{
+    text-decoration: none;
+}
+
+#secciones > div > a{
+    text-decoration: none;
+}
+
+.btn-ok{
+    background-color: #004065;
+    border-color: #004065;
+    color: white;
+}
+
+.btn-ok:hover{
+    opacity: 0.7;
+    color: white !important;
+
+    -webkit-transition-property:all;
+    -moz-transition-property:all;
+    -o-transition-property:all;
+    -ms-transition-property:all;
+    transition-property:all;
+
+    -webkit-transition-duration:0.5s;
+    -moz-transition-duration:0.5s;
+    -o-transition-duration:0.5s;
+    -ms-transition-duration:0.5s;
+    transition-duration:0.5s;
+
+    -webkit-transition-timing-function:  ease;
+    -moz-transition-timing-function:  ease;
+    -o-transition-timing-function:  ease;
+    -ms-transition-timing-function:  ease;
+    transition-timing-function: ease;
 }

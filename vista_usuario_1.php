@@ -24,7 +24,7 @@ and open the template in the editor.
             </div>
             <div id="secciones" style="overflow: hidden">
                 <div class="col-lg-4" style="border: 10px">
-                    <a>
+                    <a type="button" data-toggle="modal" data-target="#busquedaAnimales">
                         <div id="top_left cuadro_info">
                             <h4>ANIMALES</h4>
                             <p>0</p>
@@ -33,7 +33,7 @@ and open the template in the editor.
                     </a>
                 </div>
                 <div class="col-lg-4" style="border: 10px">
-                    <a>
+                    <a type="button" data-toggle="modal" data-target="#busquedaReproduccion">
                         <div id="top_middle cuadro_info">
                             <h4>REPRODUCCIÓN</h4>
                             <p>0 Hembras con preñez confirmada</p>
@@ -49,6 +49,60 @@ and open the template in the editor.
                             <img src="./imagenes/inventario.png" alt="inventario" width="30%" height="30%">
                         </div>
                     </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="busquedaAnimales" tabindex="-1" role="dialog" aria-labelledby="busquedaAnimales">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Búsqueda de animal</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">                                
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca">
+                                </div>
+                            </div>                       
+                            
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-ok">Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="busquedaReproduccion" tabindex="-1" role="dialog" aria-labelledby="busquedaReproduccion">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Búsqueda reproducción</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">                                
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca">
+                                </div>
+                            </div>                       
+                            
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-ok">Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>                    
                 </div>
             </div>
         </div>
