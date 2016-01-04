@@ -15,13 +15,7 @@
     if (!$mysqli = new mysqli('localhost', 'root', '', 'pasantia')) {
         die("Error al conectarse a la base de datos");
     }
-
     
-
-    print_r($user);
-    print_r($pass);
-    echo "<br>";
-
     require_once('conexionMySqli.php');
 
     try {
