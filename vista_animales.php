@@ -17,10 +17,34 @@ and open the template in the editor.
         <?php
         include_once './head_vista_usuario.php';
         ?>
-        <div class="container">
-            
+        <div class="container" style="padding-top: 70px">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="navbar-brand">Vaca N° 1234</li>
+                <li role="presentation"><a href="?general">Información general</a></li>
+                <li role="presentation"><a href="?crias">Crías</a></li>
+            </ul>
+            <?php
+            $seccion = basename($_SERVER['QUERY_STRING']);
+            if (empty($seccion)) {
+                include 'datos_generales.php';
+            } else {
+                $imp = 0;
+                switch ($seccion) {
+                    case 'general':
+                        $imp = 1;
+                        include 'datos_generales.php';
+                        break;
+                    case 'crias':
+                        $imp = 1;
+                        include 'quienes_somos.php';
+                        break;                    
+                }
+                if ($imp === 0) {
+                    echo $seccion + (': No existe esta sección');
+                }
+            }
+            ?> 
         </div>
-
 
         <?php
         ?>
