@@ -61,11 +61,14 @@
             echo "<br>";
 
             $_SESSION['nombre'] = $nombre_usuario; //CREAMOS UNA SESSION CON EL nombre DE LA PERSONA PARA MOSTRARLO   
+            $_SESSION['sesion']= "activa";
             header('location: ../vista_usuario_1.php');
             //ADMIN, EN NUESTRA TABLA usuarios, ADMIN LO IDENTIFICAMOS CON 1.        
         } else {
-//        header('location: ../../index.php');
-            print 'Usuario no registrado'; // EN CASO DE EL PARAMETRO OUT RESULT SER 0 MANDA MENSAJE  usuario NO REGISTRADO
+            echo '<script language="javascript">window.location="../index.php"; alert("Usuario no registrado en la base de datos"); </script>'; 
+            
+            
+//            print 'Usuario no registrado'; // EN CASO DE EL PARAMETRO OUT RESULT SER 0 MANDA MENSAJE  usuario NO REGISTRADO
         }
 
         $mysqli->close();

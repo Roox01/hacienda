@@ -17,17 +17,17 @@ and open the template in the editor.
                 <div style="text-align: center;margin-bottom: 3px;">
                     <img id="imagen_login" src="./imagenes/fondo_1.jpg">
                 </div>
-                <form class="form-horizontal" action="controlador/control_usuario.php" method="POST">
+                <form class="form-horizontal" action="controlador/loginUsuario.php" method="POST">
                     <div class="form-group">
                         <label for="user" class="col-sm-1 control-label"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></label>
                         <div class="col-sm-11">
-                            <input id="user" name="user" type="text" class="form-control"  placeholder="Usuario">
+                            <input id="user" name="user" type="text" class="form-control"  placeholder="Usuario" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-sm-1 control-label"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></label>
                         <div class="col-sm-11">
-                            <input id="password" name="password" type="password" class="form-control" placeholder="Contraseña">
+                            <input id="password" name="password" type="password" class="form-control" placeholder="Contraseña" required>
                         </div>
                     </div>
                     <div class="form-group">

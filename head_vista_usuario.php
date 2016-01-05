@@ -4,7 +4,7 @@
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuario
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Salir</a></li>                    
+            <li><a href="controlador/logoutUsuario.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Salir</a></li>                    
         </ul>
     </div>
 </div>
