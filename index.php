@@ -17,17 +17,17 @@ and open the template in the editor.
                 <div style="text-align: center;margin-bottom: 3px;">
                     <img id="imagen_login" src="./imagenes/fondo_1.jpg">
                 </div>
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="controlador/control_usuario.php" method="POST">
                     <div class="form-group">
                         <label for="user" class="col-sm-1 control-label"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></label>
                         <div class="col-sm-11">
-                            <input type="email" class="form-control" id="user" placeholder="Usuario">
+                            <input id="user" name="user" type="text" class="form-control"  placeholder="Usuario">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-sm-1 control-label"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></label>
                         <div class="col-sm-11">
-                            <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                            <input id="password" name="password" type="password" class="form-control" placeholder="Contraseña">
                         </div>
                     </div>
                     <div class="form-group">
@@ -41,17 +41,12 @@ and open the template in the editor.
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-1 col-sm-11">
-                            <button type="submit" class="btn btn-default">Ingresar</button>
+                            <button type="submit" name="action" class="btn btn-default">Ingresar</button>
                         </div>
                     </div>
                 </form>
             </div>    
         </div>
-
-
-        <?php
         
-            echo 'esto es una prueba';
-        ?>
     </body>
 </html>
