@@ -1,4 +1,4 @@
-<?php include("controlador/seguridadUsuarioAdmin.php");
+<?php // include("controlador/seguridadUsuarioAdmin.php");
 ?>
 
 <!DOCTYPE html>
