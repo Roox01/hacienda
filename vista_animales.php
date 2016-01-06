@@ -18,9 +18,13 @@ and open the template in the editor.
         include_once './head_vista_usuario.php';
         ?>
         <div class="container" style="padding-top: 70px">
+             
+                <h2>Sistema para la administración del ganado</h2>
+            
             <ul class="nav nav-tabs">
-                <li role="presentation" class="navbar-brand">Vaca N° 1234</li>
+                <li role="presentation"><a href="./vista_usuario_1.php">Inicio</a></li>
                 <li role="presentation"><a href="?general">Información general</a></li>
+                <li role="presentation"><a href="?tabla">Información general tabla</a></li>
                 <li role="presentation"><a href="?crias">Crías</a></li>
             </ul>
             <?php
@@ -36,8 +40,12 @@ and open the template in the editor.
                         break;
                     case 'crias':
                         $imp = 1;
-                        include 'quienes_somos.php';
-                        break;                    
+                        include 'datos_crias.php';
+                        break;
+                    case 'tabla':
+                        $imp = 1;
+                        include 'datos_generales_tabla.php';
+                        break;  
                 }
                 if ($imp === 0) {
                     echo $seccion + (': No existe esta sección');

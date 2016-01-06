@@ -158,3 +158,8 @@ a{
     -ms-transition-timing-function:  ease;
     transition-timing-function: ease;
 }
+
+body > div.container > div > table > tbody > tr > td{
+    padding-top: 1em;
+    padding-bottom:  1em;
+}
