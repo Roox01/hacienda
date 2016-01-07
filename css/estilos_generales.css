@@ -9,7 +9,8 @@ and open the template in the editor.
 */
 
 #index{
-    background: url('../imagenes/fondo_1.jpg') center center fixed;
+    background: url('../imagenes/establo.jpg') center center fixed;
+    margin-left: -10%;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -24,8 +25,8 @@ and open the template in the editor.
     right: 35%;
     top: 30%;
 
-    opacity: 0.7;
-    filter: alpha(opacity=70);
+    opacity: 0.9;
+    filter: alpha(opacity=90);
 
     border-top-left-radius:5em;
     border-bottom-right-radius: 5em;
@@ -40,6 +41,12 @@ and open the template in the editor.
     background-repeat: no-repeat;
     width: 30%;
     height: 15%;
+}
+
+.btn_naranja{
+    background-color: #004065;
+    border-color: #004065;
+    color: white;
 }
 
 #head_usuario{

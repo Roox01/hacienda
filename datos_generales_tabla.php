@@ -1,5 +1,5 @@
 <h4>Vaca N° 1234</h4>
-<div class="col-sm-8">
+<div class="col-sm-8 visible-sm visible-xs">
 <table class="table table-hover col-sm-8">
     <tr>
         <td class="col-sm-3"><strong>Nombre</strong></td>

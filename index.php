@@ -30,7 +30,7 @@ and open the template in the editor.
                             <input id="password" name="password" type="password" class="form-control" placeholder="Contraseña" required>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="text-align: center;margin-left: -10%">
                         <div class="col-sm-offset-1 col-sm-11">
                             <div class="checkbox">
                                 <label>
@@ -39,9 +39,9 @@ and open the template in the editor.
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="text-align: center;margin-left: -10%">
                         <div class="col-sm-offset-1 col-sm-11">
-                            <button type="submit" name="action" class="btn btn-default">Ingresar</button>
+                            <button type="submit" name="action" class="btn btn_naranja"> Ingresar</button>
                         </div>
                     </div>
                 </form>

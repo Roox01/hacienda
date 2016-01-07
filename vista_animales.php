@@ -24,8 +24,8 @@ and open the template in the editor.
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="./vista_usuario_1.php">Inicio</a></li>
                 <li role="presentation"><a href="?general">Información general</a></li>
-                <li role="presentation"><a href="?tabla">Información general tabla</a></li>
                 <li role="presentation"><a href="?crias">Crías</a></li>
+                <li role="presentation"><a href="?clasif">Clasificación fenotípica</a></li>
             </ul>
             <?php
             $seccion = basename($_SERVER['QUERY_STRING']);
@@ -45,7 +45,11 @@ and open the template in the editor.
                     case 'tabla':
                         $imp = 1;
                         include 'datos_generales_tabla.php';
-                        break;  
+                        break;
+                    case 'clasif':
+                        $imp = 1;
+                        include 'clasificacion_fenotipica.php';
+                        break;
                 }
                 if ($imp === 0) {
                     echo $seccion + (': No existe esta sección');
