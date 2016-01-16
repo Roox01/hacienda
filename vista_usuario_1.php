@@ -54,15 +54,18 @@ and open the template in the editor.
                     </a>
                 </div>                
             </div>
-            <div class="col-lg-4" style="border: 10px">
-                <a>
-                    <div id="left cuadro_info">
-                        <h4>REGISTRO</h4>
-                        <p></p>
-                        <img src="./imagenes/reproduccion.png" alt="vaca" width="30%" height="30%">
-                    </div>
-                </a>
+            <div id="secciones" style="overflow: hidden">
+                <div class="col-lg-4" style="border: 10px">
+                    <a>
+                        <div id="left cuadro_info">
+                            <h4>REGISTRO</h4>
+                            <p></p>
+                            <img src="./imagenes/reproduccion.png" alt="vaca" width="25%" height="25%">
+                        </div>
+                    </a>
+                </div>
             </div>
+
         </div>
 
         <!-- Modal -->

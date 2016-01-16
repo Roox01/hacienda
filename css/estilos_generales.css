@@ -8,6 +8,9 @@ and open the template in the editor.
     Author     : BrianFernando
 */
 
+body{
+    padding-bottom: 2em;
+}
 #index{
     background: url('../imagenes/establo.jpg') center center fixed;
     margin-left: -10%;
@@ -75,7 +78,7 @@ and open the template in the editor.
 #left\20 cuadro_info{
     margin-right: 2px;
     margin-top: 2px;
-    background-color: #004065;
+    background-color: #74DF00;
 }
 
 #top_middle\20 cuadro_info{

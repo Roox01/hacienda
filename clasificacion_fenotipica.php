@@ -24,12 +24,112 @@
             <td class="col-sm-9">-----</td>
         </tr>
         <tr>
-            <td class="col-sm-1 texto-vertical" rowspan="6">
+            <td class="col-sm-1 texto-vertical" rowspan="6" style="line-height: 2">
                 <p>CAPACIDAD CORPORAL 20 PUNTOS</p>
             </td>                   
             <td class="col-sm-3"><strong>
                     <p>Largo</p>
                     <p>4</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3"><strong>
+                    <p>Amplitud</p>
+                    <p>Pecho 2</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3"><strong>
+                    <p>Amplitud</p>
+                    <p>Lomo 3</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3"><strong>
+                    <p>Amplitud</p>
+                    <p>Anca 4</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3"><strong>
+                    <p>Profundidad</p>
+                    <p>Toráx 3</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3"><strong>
+                    <p>Profundidad</p>
+                    <p>Corazón 4</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3" colspan="2"><strong>
+                    <p>Arreglar</p>
+                    <p>2</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3" colspan="2"><strong>
+                    <p>Arreglar</p>
+                    <p>2</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3" colspan="2"><strong>
+                    <p>Arreglar</p>
+                    <p>2</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-1 texto-vertical" rowspan="5" style="line-height: 2">
+                <p>SISTEMA MAMARIO</p>
+            </td>                   
+            <td class="col-sm-3"><strong>
+                    <p>Ap. Gral.</p>
+                    <p>7</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3"><strong>
+                    <p>U. Post.</p>
+                    <p>3</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3"><strong>
+                    <p>U. Ant.</p>
+                    <p>3</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3"><strong>
+                    <p>Pesón</p>
+                    <p>5</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3"><strong>
+                    <p>Irrig.</p>
+                    <p>3</p>
+                </strong></td>
+            <td class="col-sm-9">-----</td>
+        </tr>
+        <tr>
+            <td class="col-sm-3" colspan="2"><strong>
+                    <h3><p>TOTAL</p></h3>
                 </strong></td>
             <td class="col-sm-9">-----</td>
         </tr>
