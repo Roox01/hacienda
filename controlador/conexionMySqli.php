@@ -9,7 +9,7 @@ function Conectarse() {
         exit();
     }
     /* en nombre_BD va el nombre de la BD que creaste al principio */
-    if (!mysqli_select_db($link, "pasantia")) {
+    if (!mysqli_select_db($link, "hacienda")) {
         echo "Error seleccionando la base de datos.";
         exit();
     }

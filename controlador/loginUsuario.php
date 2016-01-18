@@ -12,7 +12,7 @@
     $user = $_POST['user']; 
     $pass = $_POST['password'];
 
-    if (!$mysqli = new mysqli('localhost', 'root', '', 'pasantia')) {
+    if (!$mysqli = new mysqli('localhost', 'root', '', 'hacienda')) {
         die("Error al conectarse a la base de datos");
     }
     
@@ -20,8 +20,8 @@
 
     try {
         //preparacion de la consulta
-        $sql = "SELECT usuario.nombre_usuario, usuario.apellido_usuario 
-        FROM usuario WHERE usuario.nombre_usuario=? AND usuario.apellido_usuario =?";
+        $sql = "SELECT usuario.nombre_usuario, usuario.password 
+        FROM usuario WHERE usuario.nombre_usuario=? AND usuario.password =?";
 
         //PREPARAMOS EL PROCEDIMIENTO
         if (!$sentencia = $mysqli->prepare($sql)) {
@@ -48,7 +48,7 @@
 
         $fila_recuperada = $resultado->fetch_array(MYSQLI_ASSOC);
         $usuario = $fila_recuperada['nombre_usuario'];
-        $password = $fila_recuperada['codigo_usuario'];
+        $password = $fila_recuperada['password'];
 
         print_r($fila_recuperada);
         echo "<br>";

@@ -1,4 +1,4 @@
-<?php // include("controlador/seguridadUsuarioAdmin.php");
+<?php include("controlador/seguridadUsuarioAdmin.php");
 ?>
 
 <!DOCTYPE html>
@@ -65,16 +65,16 @@ and open the template in the editor.
                         <h4 class="modal-title" id="myModalLabel">Búsqueda de animal</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="vista_animales.php" method="POST">
                             <div class="form-group">                                
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca">
+                                    <input type="text" class="form-control" name="codigoVaca" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca">
                                 </div>
                             </div>                       
                             
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-ok">Buscar</button>
+                                    <button type="submit" name="action" class="btn btn-ok">Buscar</button>
                                 </div>
                             </div>
                         </form>
@@ -109,9 +109,6 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-
-
-        <?php
-        ?>
+        
     </body>
 </html>
