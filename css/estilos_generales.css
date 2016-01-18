@@ -8,6 +8,9 @@ and open the template in the editor.
     Author     : BrianFernando
 */
 
+body{
+    padding-bottom: 2em;
+}
 #index{
     background: url('../imagenes/establo.jpg') center center fixed;
     margin-left: -10%;
@@ -72,6 +75,12 @@ and open the template in the editor.
     background-color: #004065;
 }
 
+#left\20 cuadro_info{
+    margin-right: 2px;
+    margin-top: 2px;
+    background-color: #74DF00;
+}
+
 #top_middle\20 cuadro_info{
     background-image: url('../imagenes/breedings.jpg');
     background-size: contain;
@@ -101,13 +110,16 @@ and open the template in the editor.
     margin-bottom: -32767px;
 }
 
-#top_left\20 cuadro_info{
-
+#left\20 cuadro_info{
+    padding: 5px;
+    color: white;
+    text-align: center;
 }
 
 #top_middle\20 cuadro_info:hover,
 #top_rigth\20 cuadro_info:hover,
-#top_left\20 cuadro_info:hover{
+#top_left\20 cuadro_info:hover,
+#left\20 cuadro_info:hover{
     opacity: 0.7;
 
     -webkit-transition-property:all;
@@ -164,6 +176,14 @@ a{
     -o-transition-timing-function:  ease;
     -ms-transition-timing-function:  ease;
     transition-timing-function: ease;
+}
+
+.interlineado_05{
+    line-height: 0.5;
+}
+
+.texto-vertical{
+    writing-mode: vertical-lr;
 }
 
 body > div.container > div > table > tbody > tr > td{

@@ -52,8 +52,20 @@ and open the template in the editor.
                             <img src="./imagenes/inventario.png" alt="inventario" width="30%" height="30%">
                         </div>
                     </a>
+                </div>                
+            </div>
+            <div id="secciones" style="overflow: hidden">
+                <div class="col-lg-4" style="border: 10px">
+                    <a>
+                        <div id="left cuadro_info">
+                            <h4>REGISTRO</h4>
+                            <p></p>
+                            <img src="./imagenes/reproduccion.png" alt="vaca" width="25%" height="25%">
+                        </div>
+                    </a>
                 </div>
             </div>
+
         </div>
 
         <!-- Modal -->
@@ -71,7 +83,7 @@ and open the template in the editor.
                                     <input type="text" class="form-control" name="codigoVaca" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca">
                                 </div>
                             </div>                       
-                            
+
                             <div class="form-group">
                                 <div class="col-sm-10">
                                     <button type="submit" name="action" class="btn btn-ok">Buscar</button>
@@ -82,7 +94,7 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-        
+
         <!-- Modal -->
         <div class="modal fade" id="busquedaReproduccion" tabindex="-1" role="dialog" aria-labelledby="busquedaReproduccion">
             <div class="modal-dialog" role="document">
@@ -98,7 +110,7 @@ and open the template in the editor.
                                     <input type="text" class="form-control" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca">
                                 </div>
                             </div>                       
-                            
+
                             <div class="form-group">
                                 <div class="col-sm-10">
                                     <button type="submit" class="btn btn-ok">Buscar</button>
