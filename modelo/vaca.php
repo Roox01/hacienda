@@ -20,7 +20,7 @@ class vaca {
     var $peso_entrada_toro;
     var $foto;
 
-    function __construct($datos) {
+    public function __construct($datos) {
         $this->numero = $datos[0];
         $this->nombre = $datos[1];
         $this->registro = $datos[2];
@@ -37,7 +37,7 @@ class vaca {
         $this->peso_entrada_toro = $datos[13];
     }
 
-    function datos_generales_desktop() {
+    public function datos_generales_desktop() {
         $mensaje ='<li>
         <span class="col-sm-3"><strong>Nombre</strong></span>
         <span class="col-sm-9">' . $this->nombre . '</span>
