@@ -126,18 +126,20 @@
         </div>
     </div>
 </div>
-
+<div>
+    <ul id="cargar_datos_generales" class="col-sm-8 visible-lg visible-md" style="list-style: none; line-height: 2">        
+    </ul>
+</div>
 <script>
     function buscarUsuario() {        
         var vaca = <?php echo$_POST['codigoVaca'];?>;
         if (vaca != "") {
-            $.post("/controlador/controlador_vaca.php", {valorBusqueda: vaca, opcion: "buscar"},
+            $.post("/controlador/controlador_vaca.php", {valorBusqueda: vaca, opcion: "datos_generales"},
             function (mensaje) {
-                $("#datosgenerales").html(mensaje);
+                $("#cargar_datos_generales").html(mensaje);
             });
         } else {
-            $("#datosgenerales").html("No existe vaca");
-            Materialize.toast('Favor digitar el número de documento', 3000, 'rounded');
+            $("#datosgenerales").html("No existe vaca");            
         }
     }
     ;
