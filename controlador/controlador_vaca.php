@@ -12,7 +12,7 @@ function datos_generales(){
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
-    $codigo_vaca = $_POST['vaca'];
+    $codigo_vaca = (int)$_POST['vaca'];
 
     $sql = "SELECT `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`, `padre_registro`,"
             . " `madre_numero`, `madre_registro`, `clasificacion`, `peso_205dias`, `altura_sacro_destete`,"
@@ -31,11 +31,11 @@ function datos_generales(){
             $datos=[$numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto];
             $vaca=new Vaca();
             $vaca->crear($datos);
+            $mensaje.= $vaca->datos_generales_desktop();
         }
     }
     $sentencia->close();
-    $mysqli->close();
-    $mensaje=  str_replace("&", "'", $mensaje);
+    $mysqli->close();    
     echo $mensaje;
 }
 
