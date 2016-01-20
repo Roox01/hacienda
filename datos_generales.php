@@ -131,15 +131,19 @@
     </ul>
 </div>
 <script>
-    function buscarUsuario() {        
-        var vaca = <?php echo$_POST['codigoVaca'];?>;
+    $(document).ready(function () {
+        cargarDatosGenerales();
+    }
+    );
+    function cargarDatosGenerales() {
+        var vaca = $('#vaca').val();
         if (vaca != "") {
-            $.post("/controlador/controlador_vaca.php", {vaca: vaca, opcion: "datos_generales"},
+            $.post("controlador/controlador_vaca.php", {vaca: vaca, opcion: "datos_generales"},
             function (mensaje) {
                 $("#cargar_datos_generales").html(mensaje);
             });
         } else {
-            $("#datosgenerales").html("No existe vaca");            
+            $("#cargar_datos_generales").html("No existe vaca");
         }
     }
     ;

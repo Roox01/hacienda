@@ -11,7 +11,7 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="./css/bootstrap/css/bootstrap.min.css">
         <script type="text/javascript" src="./css/bootstrap/js/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="./css/bootstrap/js/bootstrap.min.js"></script>
-        
+
         <title>Vista animales</title>
     </head>
     <body>
@@ -21,7 +21,7 @@ and open the template in the editor.
         <div class="container" style="padding-top: 70px">
 
             <h2>Sistema para la administración del ganado</h2>
-            <input type="hidden" name="vaca" id="vaca" value="<?php echo$_POST['codigoVaca'];?>">
+            <input type="hidden" name="vaca" id="vaca" value="<?php echo$_POST['codigoVaca']; ?>">
 
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="./vista_usuario_1.php">Inicio</a></li>
@@ -59,8 +59,5 @@ and open the template in the editor.
             }
             ?> 
         </div>
-
-        <?php
-        ?>
     </body>
 </html>
