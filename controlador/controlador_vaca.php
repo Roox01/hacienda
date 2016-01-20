@@ -1,5 +1,6 @@
 <?php
 require_once 'conexionMySqli.php';
+require_once '../modelo/vaca.php';
 
 $opcion = $_POST['opcion'];
 
@@ -29,7 +30,7 @@ function datos_generales(){
                 $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto);
         while ($sentencia->fetch()) {
             $datos=[$numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto];
-            $vaca=new Vaca();
+            $vaca=new vaca();
             $vaca->crear($datos);
             $mensaje.= $vaca->datos_generales_desktop();
         }
