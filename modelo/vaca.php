@@ -38,7 +38,7 @@ class vaca {
     }
 
     function datos_generales_desktop() {
-        $mensaje .='<li>
+        $mensaje ='<li>
         <span class="col-sm-3"><strong>Nombre</strong></span>
         <span class="col-sm-9">' . $this->nombre . '</span>
     </li>
@@ -95,7 +95,7 @@ class vaca {
         <span class="col-sm-9">' . $this->peso_entrada_toro . '</span>
     </li>';
 
-        echo $mensaje;
+        return $mensaje;
     }
 
 }
