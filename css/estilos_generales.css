@@ -190,3 +190,12 @@ body > div.container > div > table > tbody > tr > td{
     padding-top: 1em;
     padding-bottom:  1em;
 }
+
+input#buscar_vaca {
+    text-align: center;
+}
+
+hr{
+    background-color: black;
+    height: 10px; 
+}
