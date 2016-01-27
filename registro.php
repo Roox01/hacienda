@@ -25,6 +25,7 @@ and open the template in the editor.
                 <li role="presentation"><a href="./vista_usuario_1.php">Inicio</a></li>
                 <li role="presentation"><a href="?animal">Registrar animal</a></li>
                 <li role="presentation"><a href="?buscar">Registrar monta</a></li>
+                <li role="presentation"><a href="?cria">Registrar cría</a></li>
             </ul>
             <?php
             $seccion = basename($_SERVER['QUERY_STRING']);
@@ -45,9 +46,9 @@ and open the template in the editor.
                         $imp = 1;
                         include 'registro_monta.php';
                         break;
-                    case 'clasif':
+                    case 'cria':
                         $imp = 1;
-                        include 'clasificacion_fenotipica.php';
+                        include 'registro_cria.php';
                         break;
                 }
                 if ($imp === 0) {
