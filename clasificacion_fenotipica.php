@@ -7,7 +7,7 @@
                     <p>Ap General</p>
                     <p>25</p>
                 </strong></td>
-            <td class="col-sm-9">-----</td>
+            <td class="col-sm-9"><input type="text" id="input_1" name="poner_nombres"></td>
         </tr>
         <tr>
             <td class="col-sm-3" colspan="2"><strong>
@@ -70,22 +70,22 @@
         </tr>
         <tr>
             <td class="col-sm-3" colspan="2"><strong>
-                    <p>Arreglar</p>
-                    <p>2</p>
+                    <p>Desarrollo</p>
+                    <p>9</p>
                 </strong></td>
             <td class="col-sm-9">-----</td>
         </tr>
         <tr>
             <td class="col-sm-3" colspan="2"><strong>
-                    <p>Arreglar</p>
-                    <p>2</p>
+                    <p>Temperamento</p>
+                    <p>5</p>
                 </strong></td>
             <td class="col-sm-9">-----</td>
         </tr>
         <tr>
             <td class="col-sm-3" colspan="2"><strong>
-                    <p>Arreglar</p>
-                    <p>2</p>
+                    <p>Músculo y grasa</p>
+                    <p>6</p>
                 </strong></td>
             <td class="col-sm-9">-----</td>
         </tr>

@@ -28,7 +28,7 @@
         </tr>
         <tr style="text-align: center">
             <td class="col-md-1" rowspan="2">
-                
+
             </td>
             <td class="col-md-1" rowspan="2">
                 I.A.
@@ -54,13 +54,13 @@
         </tr>
         <tr>           
             <td class="col-md-2">
-                
+
             </td>
             <td class="col-md-2">
-                
+
             </td>
             <td class="col-md-1">
-                
+                M.N. 
             </td>
             <td class="col-md-1" style="text-align: center">
                 1<sup>a</sup>
@@ -73,66 +73,115 @@
             </td>
         </tr>
         <tr>
-            <td class="col-md-1">
+            <td class="col-md-1 no-padding">
                 F
             </td>
             <td class="col-md-1" colspan="2">
-                
+
             </td>
             <td class="col-md-2">
-                
+
             </td>
             <td class="col-md-2">
-                
+
             </td>
             <td class="col-md-1">
-                
+
             </td>
             <td class="col-md-1">
-                
+
             </td>
-            <td class="col-md-1">
+            <td class="col-md-1 no-padding">
                 F
             </td>
-            <td class="col-md-1">
+            <td class="col-md-1 no-padding">
                 F
             </td>
-            <td class="col-md-1">
+            <td class="col-md-1 no-padding">
                 F
             </td>
         </tr>
         <tr>
-            <td class="col-md-1">
+            <td class="col-md-1 no-padding">
                 T
             </td>
             <td class="col-md-1">
-                
+
             </td>
             <td class="col-md-1">
-                
+
             </td>
             <td class="col-md-2">
-                
+
             </td>
             <td class="col-md-2">
-                
+
             </td>
             <td class="col-md-1">
-                
+
             </td>
             <td class="col-md-1">
-                
+
             </td>
-            <td class="col-md-1">
+            <td class="col-md-1 no-padding">
                 R
             </td>
-            <td class="col-md-1">
+            <td class="col-md-1 no-padding">
                 R
             </td>
-            <td class="col-md-1">
+            <td class="col-md-1 no-padding">
                 R
             </td>
         </tr>
-    </table>
-    
+    </table>    
+</div>
+
+
+<!-- Button trigger modal -->
+<div class="btn-group" style="margin-top: 2em; margin-left: 1em">
+    <button type="button" class="btn btn-ok" data-toggle="modal" data-target="#programar">
+        Programar monta o inseminación artificial
+    </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="programar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Registro de programación M.N. o I.A.</h4>
+            </div>
+            <form>
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label for="tipo">Tipo</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="tipo" id="tipo1" value="1"> M.N.
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="tipo" id="tipo2" value="2"> I.A.
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" placeholder="Fecha en que se realiza el procedimiento">
+                    </div>
+                    <div class="form-group">
+                        <label for="toro">Toro</label>
+                        <input type="number" class="form-control" id="toro" placeholder="Código del toro escogido para el procedimiento">
+                    </div>
+                    
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="b" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-ok">Registrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
