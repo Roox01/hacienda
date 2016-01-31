@@ -24,7 +24,6 @@ and open the template in the editor.
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="./vista_usuario_1.php">Inicio</a></li>
                 <li role="presentation"><a href="?animal">Registrar animal</a></li>
-                <li role="presentation"><a href="?buscar">Registrar monta</a></li>
                 <li role="presentation"><a href="?cria">Registrar cría</a></li>
             </ul>
             <?php
@@ -41,10 +40,6 @@ and open the template in the editor.
                     case 'buscar':
                         $imp = 1;
                         include 'busqueda_vaca_monta.php';
-                        break;
-                    case 'monta':
-                        $imp = 1;
-                        include 'registro_monta.php';
                         break;
                     case 'cria':
                         $imp = 1;
