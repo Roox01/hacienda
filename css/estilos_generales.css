@@ -244,3 +244,75 @@ body > div.container > div.col-sm-8 > form > table > tbody > tr > td.col-sm-9 > 
     -ms-transition-timing-function:  ease;
     transition-timing-function: ease;
 }
+
+body > div.container > div > form > table > tbody > tr > td.col-md-1{
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+body > div.container > div > form > table > tbody > tr > td.col-md-1 > input{
+    border-color: transparent;
+    background: transparent;
+    color:#333333;
+    border-radius: 5px;
+    line-height: 150%;
+    width: 100%;
+}
+
+body > div.container > div > form > table > tbody > tr > td.col-md-1 > input:hover{
+    border-color: initial;
+
+    -webkit-transition-property:all;
+    -moz-transition-property:all;
+    -o-transition-property:all;
+    -ms-transition-property:all;
+    transition-property:all;
+
+    -webkit-transition-duration:0.5s;
+    -moz-transition-duration:0.5s;
+    -o-transition-duration:0.5s;
+    -ms-transition-duration:0.5s;
+    transition-duration:0.5s;
+
+    -webkit-transition-timing-function:  ease;
+    -moz-transition-timing-function:  ease;
+    -o-transition-timing-function:  ease;
+    -ms-transition-timing-function:  ease;
+    transition-timing-function: ease;
+}
+
+body > div.container > div > form > table > tbody > tr > td.col-md-2{
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+body > div.container > div > form > table > tbody > tr > td.col-md-2 > input{
+    border-color: transparent;
+    background: transparent;
+    color:#333333;
+    border-radius: 5px;
+    line-height: 150%;
+    width: 100%;
+}
+
+body > div.container > div > form > table > tbody > tr > td.col-md-2 > input:hover{
+    border-color: initial;
+
+    -webkit-transition-property:all;
+    -moz-transition-property:all;
+    -o-transition-property:all;
+    -ms-transition-property:all;
+    transition-property:all;
+
+    -webkit-transition-duration:0.5s;
+    -moz-transition-duration:0.5s;
+    -o-transition-duration:0.5s;
+    -ms-transition-duration:0.5s;
+    transition-duration:0.5s;
+
+    -webkit-transition-timing-function:  ease;
+    -moz-transition-timing-function:  ease;
+    -o-transition-timing-function:  ease;
+    -ms-transition-timing-function:  ease;
+    transition-timing-function: ease;
+}
