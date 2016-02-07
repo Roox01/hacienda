@@ -46,15 +46,26 @@
     </li>
     <li>
         <span class="col-sm-3"><strong>Peso ajust. 18 meses</strong></span>
-        <span class="col-sm-9">250kg</span>
+        <span class="col-sm-9"><input style="width: 50%" type="text" id="input_1" name="poner_nombres" value="----"></span>
     </li>
     <li>
         <span class="col-sm-3"><strong>Fecha entrada a Toro</strong></span>
-        <span class="col-sm-9">?????????</span>
+        <span class="col-sm-9"><input style="width: 50%" type="text" id="input_2" name="poner_nombres" value="----"></span>
     </li>
     <li>
         <span class="col-sm-3"><strong>Peso entrada a Toro</strong></span>
-        <span class="col-sm-9">?????????</span>
+        <span class="col-sm-9"><input style="width: 50%" type="text" id="input_3" name="poner_nombres" value="----"></span>
+    </li>
+    <li>
+        <span class="col-sm-3"><strong>Estado</strong></span>
+        <span class="col-sm-9">
+            <select style="width: 50%" class="form-control">
+                <option>Viva</option>
+                <option>Perdida</option>
+                <option>Muerta</option>
+                <option>Traslado</option>
+            </select>
+        </span>
     </li>
 </ul>
 <div class="col-sm-8 visible-sm visible-xs">
@@ -105,17 +116,26 @@
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Peso ajust. 18 meses</strong></td>
-            <td class="col-sm-9">250kg</td>
+            <td class="col-sm-9"><input type="text" id="input_1" name="poner_nombres" value="----"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Fecha entrada a Toro</strong></td>
-            <td class="col-sm-9">?????????</td>
+            <td class="col-sm-9"><input type="text" id="input_2" name="poner_nombres" value="----"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Peso entrada a Toro</strong></td>
-            <td class="col-sm-9">?????????</td>
+            <td class="col-sm-9"><input type="text" id="input_3" name="poner_nombres" value="----"></td>
         </tr>
     </table>
+    <span class="col-sm-3"><strong>Estado</strong></span>
+        <span class="col-sm-9">
+            <select style="width: 50%" class="form-control">
+                <option>Viva</option>
+                <option>Perdida</option>
+                <option>Muerta</option>
+                <option>Traslado</option>
+            </select>
+        </span>
 </div>
 <div class="col-sm-4">
     <div class="row">
