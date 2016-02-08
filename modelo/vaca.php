@@ -36,6 +36,8 @@ class vaca {
         $this->fecha_entrada_toro = $datos[12];
         $this->peso_entrada_toro = $datos[13];
     }
+    
+    
 
     public function datos_generales_desktop() {
         $mensaje ='<li>

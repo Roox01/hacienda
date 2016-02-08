@@ -23,6 +23,7 @@ echo $_SESSION['vaca'];
     <body>
         <?php
         include_once './head_vista_usuario.php';
+        
         ?>
         <div class="container" style="padding-top: 70px">
 

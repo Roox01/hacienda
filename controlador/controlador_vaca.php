@@ -30,12 +30,11 @@ function datos_generales(){
                 $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto);
         while ($sentencia->fetch()) {
             $datos=[$numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto];
-            $vaca=new vaca($datos); 
-            $mensaje.= $vaca->datos_generales_desktop();
+            $mensaje.=json_encode($datos);
         }
     }
     $sentencia->close();
-    $mysqli->close();    
+    $mysqli->close();
     echo $mensaje;
 }
 

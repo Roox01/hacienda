@@ -1,71 +1,71 @@
 <div class="col-sm-8">
-    <table class="table table-hover col-sm-8">
-        <tr>
-            <td class="col-sm-3"><strong>Nombre</strong></td>
-            <td class="col-sm-9">Josefa</td>
-        </tr>
+    <table class="table table-hover col-sm-8" id="datos_generales">
         <tr>
             <td class="col-sm-3"><strong>Número</strong></td>
-            <td class="col-sm-9">44</td>
+            <td class="col-sm-9 res"></td>
+        </tr>
+        <tr>
+            <td class="col-sm-3"><strong>Nombre</strong></td>
+            <td class="col-sm-9 res"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Reg</strong></td>
-            <td class="col-sm-9">-------</td>
+            <td class="col-sm-9 res"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Fecha de nacimiento</strong></td>
-            <td class="col-sm-9">10/Sep/2015</td>
+            <td class="col-sm-9 res"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Padre</strong></td>
-            <td class="col-sm-9">568</td>
+            <td class="col-sm-9 res"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Reg No.</strong></td>
-            <td class="col-sm-9">------</td>
+            <td class="col-sm-9 res"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Madre</strong></td>
-            <td class="col-sm-9">789</td>
+            <td class="col-sm-9 res"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Reg</strong></td>
-            <td class="col-sm-9">------</td>
+            <td class="col-sm-9 res"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Clasificación</strong></td>
-            <td class="col-sm-9">Br. Cial</td>
+            <td class="col-sm-9 res"><input type="text" id="input_1" name="poner_nombres" value="----"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Peso ajust. 205 días</strong></td>
-            <td class="col-sm-9">158kg</td>
+            <td class="col-sm-9 res"><input type="text" id="input_2" name="poner_nombres" value="----"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Altura sacro (Destete)</strong></td>
-            <td class="col-sm-9">50cm</td>
+            <td class="col-sm-9 res"><input type="text" id="input_3" name="poner_nombres" value="----"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Peso ajust. 18 meses</strong></td>
-            <td class="col-sm-9"><input type="text" id="input_1" name="poner_nombres" value="----"></td>
+            <td class="col-sm-9 res"><input type="text" id="input_4" name="poner_nombres" value="----"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Fecha entrada a Toro</strong></td>
-            <td class="col-sm-9"><input type="text" id="input_2" name="poner_nombres" value="----"></td>
+            <td class="col-sm-9 res"><input type="text" id="input_5" name="poner_nombres" value="----"></td>
         </tr>
         <tr>
             <td class="col-sm-3"><strong>Peso entrada a Toro</strong></td>
-            <td class="col-sm-9"><input type="text" id="input_3" name="poner_nombres" value="----"></td>
+            <td class="col-sm-9 res"><input type="text" id="input_6" name="poner_nombres" value="----"></td>
         </tr>
     </table>
     <span class="col-sm-3"><strong>Estado</strong></span>
-        <span class="col-sm-9">
-            <select style="width: 50%" class="form-control">
-                <option>Viva</option>
-                <option>Perdida</option>
-                <option>Muerta</option>
-                <option>Traslado</option>
-            </select>
-        </span>
+    <span class="col-sm-9">
+        <select style="width: 50%" class="form-control">
+            <option>Viva</option>
+            <option>Perdida</option>
+            <option>Muerta</option>
+            <option>Traslado</option>
+        </select>
+    </span>
 </div>
 <div class="col-sm-4">
     <div class="row">
@@ -90,7 +90,11 @@
         if (vaca != "") {
             $.post("controlador/controlador_vaca.php", {vaca: vaca, opcion: "datos_generales"},
             function (mensaje) {
-                $("#cargar_datos_generales").html(mensaje);
+                var datos = JSON.parse(mensaje);
+                $("#datos_generales .res ").each(function (i) {
+                    $(this).append(datos[i]);
+                });
+//                $("#cargar_datos_generales").html(datos);
             });
         } else {
             $("#cargar_datos_generales").html("No existe vaca");
