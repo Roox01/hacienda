@@ -4,6 +4,12 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+include 'controlador/seguridadUsuarioAdmin.php';
+
+echo $_SESSION['vaca'];
+?>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -21,7 +27,7 @@ and open the template in the editor.
         <div class="container" style="padding-top: 70px">
 
             <h2>Sistema para la administración del ganado</h2>
-            <input type="hidden" name="vaca" id="vaca" value="<?php echo$_POST['codigoVaca']; ?>">
+            <input type="hidden" name="vaca" id="vaca" value="<?php echo $_SESSION['vaca'] ?>">
 
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="./vista_usuario_1.php">Inicio</a></li>

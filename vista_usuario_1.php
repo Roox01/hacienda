@@ -77,10 +77,11 @@ and open the template in the editor.
                         <h4 class="modal-title" id="myModalLabel">Búsqueda de animal</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="vista_animales.php" method="POST">
+                        <form class="form-horizontal" action="controlador/consulta.php" method="POST">
                             <div class="form-group">                                
                                 <div class="col-sm-12">
                                     <input type="text" class="form-control" name="codigoVaca" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca">
+                                    <input type="hidden" name="opcion" id="opcion" value="consulta">
                                 </div>
                             </div>                       
 
@@ -104,10 +105,12 @@ and open the template in the editor.
                         <h4 class="modal-title" id="myModalLabel">Búsqueda reproducción</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="controlador/consulta.php" method="POST">
                             <div class="form-group">                                
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca">
+                                    <input type="text" class="form-control" name="codigoVaca" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca">
+                                    <input type="hidden" name="opcion" id="opcion" value="reproduccion">
+
                                 </div>
                             </div>                       
 
@@ -121,6 +124,6 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-        
+
     </body>
 </html>

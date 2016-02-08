@@ -1,3 +1,8 @@
+<?php  
+    
+    $vaca = $_SESSION['vaca'];
+    echo $vaca;
+?> 
 <html>
     <head>
         <meta charset="UTF-8">
@@ -12,9 +17,9 @@
         include_once './head_vista_usuario.php';
         ?>
         <div class="container" style="padding-top: 70px">
-             
-                <h2>Sistema para la administración del ganado</h2>
-            
+
+            <h2>Sistema para la administración del ganado</h2>
+
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="./vista_usuario_1.php">Inicio</a></li>
                 <li role="presentation"><a href="?general">Datos de reproducción</a></li>
