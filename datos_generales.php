@@ -1,6 +1,7 @@
 <h4>Vaca N° <?php echo $_SESSION['vaca']?></h4>
 <div class="col-sm-8">
-    <table class="table table-hover col-sm-8" id="datos_generales">
+    <form>
+    <table class="table col-sm-8" id="datos_generales">
         <tr>
             <td class="col-sm-3"><strong>Número</strong></td>
             <td class="col-sm-9 res"><input type="text" id="input_0" disabled></td>
@@ -67,6 +68,7 @@
             <option>Traslado</option>
         </select>
     </span>
+    </form>
 </div>
 <div class="col-sm-4">
     <div class="row">
