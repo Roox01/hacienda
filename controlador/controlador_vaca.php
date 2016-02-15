@@ -10,6 +10,7 @@ if ($opcion == "datos_generales") {
 
 if ($opcion == "clasificacion_fenotipo") {
     clasificacion_fenotipo();
+    
 }
 
 function datos_generales(){
@@ -52,7 +53,7 @@ function clasificacion_fenotipo(){
 
     $sql = "SELECT `car_racial_ap_general`, `esqueleto`, `aplomos`, `largo`, `amplitud_pecho`, `amplitud_lomo`,"
             . " `amplitud_anca`, `profundidad_torax`, `profundidad_calzon`, `desarrollo`, `temperamento`, `musculo_grasa`,"
-            . " `ap_general`, `u_post`, `u_ant`, `pezon`, `irrig`, `total` FROM `fenotipo` WHERE id_vaca=? ";
+            . " `ap_general`, `u_post`, `u_ant`, `pezon`, `irrig`, `total` FROM `fenotipo` WHERE `id_vaca`=? ;";
 
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
@@ -60,6 +61,7 @@ function clasificacion_fenotipo(){
     if (!$sentencia->bind_param("i", $codigo_vaca)) {
         $mensaje.= $mysqli->error;
     }
+    
     if ($sentencia->execute()) {
         $sentencia->bind_result($car_racial_ap_general, $esqueleto, $aplomos, $largo, $amplitud_pecho, $amplitud_lomo, $amplitud_anca, 
                 $profundidad_torax, $profundidad_calzon, $desarrollo, $temperamento, $musculo_grasa, $ap_general, $u_post, $u_ant, $pezon, $irrig, $total);
@@ -69,6 +71,7 @@ function clasificacion_fenotipo(){
             $mensaje.=json_encode($datos);
         }
     }
+//    $mensaje='["juan","pedro","jacinto"]';
     $sentencia->close();
     $mysqli->close();
     echo $mensaje;

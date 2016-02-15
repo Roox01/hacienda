@@ -37,10 +37,6 @@ and open the template in the editor.
                         $imp = 1;
                         include 'registro_animal.php';
                         break;
-                    case 'buscar':
-                        $imp = 1;
-                        include 'busqueda_vaca_monta.php';
-                        break;
                     case 'cria':
                         $imp = 1;
                         include 'registro_cria.php';

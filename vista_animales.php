@@ -24,7 +24,6 @@ echo $_SESSION['vaca'];
     <body>
         <?php
         include_once './head_vista_usuario.php';
-        
         ?>
         <div class="container" style="padding-top: 70px">
 
@@ -37,6 +36,7 @@ echo $_SESSION['vaca'];
                 <li role="presentation"><a href="?crias">Crías</a></li>
                 <li role="presentation"><a href="?clasif">Clasificación fenotípica</a></li>
             </ul>
+            <h4>Vaca N° 1234</h4>
             <?php
             $seccion = basename($_SERVER['QUERY_STRING']);
             if (empty($seccion)) {
@@ -67,5 +67,7 @@ echo $_SESSION['vaca'];
             }
             ?> 
         </div>
+
     </body>
+
 </html>

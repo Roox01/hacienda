@@ -1,4 +1,4 @@
-<h4>Vaca N° <?php echo $_SESSION['vaca']?></h4>
+<h4>Vaca N° <?php echo $_SESSION['vaca'] ?></h4>
 <div class="col-sm-8">
     <table class="table table-hover col-sm-8" id="datos_generales">
         <tr>
@@ -86,7 +86,4 @@
         cargarDatosGenerales();
     }
     );
-    
-
-
 </script>

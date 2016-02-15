@@ -1,4 +1,4 @@
-<h4>Vaca N° <?php echo $_SESSION['vaca']?></h4>
+<h4>Vaca N° <?php echo $_SESSION['vaca'] ?></h4>
 <div class="col-sm-8">
     <form>
         <table class="table-bordered interlineado_05" id="clasificacion_fenotipo">
@@ -190,4 +190,5 @@
     $(document).ready(function () {
         clasificacionFenotipo();
     }
-    );</script>
+    );
+</script>
