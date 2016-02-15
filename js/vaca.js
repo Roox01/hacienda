@@ -51,10 +51,13 @@ function cargarCrias() {
 };
 
 function registrar_vaca(){
-    var nombre=$('#nombre').val();
+    
+    var nombre=$('#form_registrar_vaca #nombre').val();
+    console.log(nombre);
     var numero=$('#numero').val();
     var registro=$('#registro').val();
     var nacimiento=$('#nacimiento').val();
+    console.log(nacimiento);
     var padre=$('#padre').val();
     var reg_padre=$('#reg_padre').val();
     var madre=$('#madre').val();
@@ -69,10 +72,10 @@ function registrar_vaca(){
     if(nombre!='' && numero!='' && registro!='' && nacimiento!='' && padre!='' && reg_padre!='' && madre!='' && reg_madre!='' && clasificacion!=''){
         $.post("controlador/controlador_vaca.php", {nombre: nombre, numero: numero, registro:registro, nacimiento:nacimiento,
             padre:padre, reg_padre:reg_padre, madre:madre, reg_madre:reg_madre, clasificacion:clasificacion, peso_205:peso_205,
-            alt_sacro:alt_sacro, peso18:peso_18, fecha_toro:fecha_toro, peso_toro:peso_toro, opcion: "registrar"},
+            alt_sacro:alt_sacro, peso_18:peso_18, fecha_toro:fecha_toro, peso_toro:peso_toro, opcion: "registrar"},
                 function (mensaje) {
-                    console.log(mensaje);
-                    alert(mensaje);
+                    $('#resultados').html(mensaje);
+                    
 //                    $('input').val('');
                 });        
     }

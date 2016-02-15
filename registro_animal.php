@@ -74,7 +74,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="peso_18" class="col-sm-2 control-label">Altura sacro</label>
+        <label for="peso_18" class="col-sm-2 control-label">Peso ajust. 18 meses</label>
         <div class="col-sm-10">
             <div class="input-group">                
                 <input type="number" class="form-control" placeholder="Peso 18 meses del animal" id="peso_18" aria-describedby="sizing-addon2">
@@ -100,9 +100,11 @@
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button class="btn btn-ok" id="registrar_vaca" onclick="registrar_vaca()">Registrar</button>
-            <button class="btn btn-default">Borrar</button>
+            <a class="btn btn-ok" id="registrar_vaca" onclick="registrar_vaca();">Registrar</a>
+            <a class="btn btn-default">Borrar</a>
         </div>
     </div>
 </form>
+
+<div id="resultados"></div>
 

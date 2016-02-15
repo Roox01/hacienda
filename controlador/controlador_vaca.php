@@ -121,28 +121,41 @@ function registrar(){
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
-    $codigo_vaca = (int)$_POST['vaca'];
+    $hacienda =1;
+    $numero = (int)$_POST['numero'];
+    $nombre = $_POST['nombre'];
+    $registro = (int)$_POST['registro'];
+    $fecha_nacimiento = date($_POST['nacimiento']);
+    $padre_numero = (int)$_POST['padre'];
+    $padre_registro = (int)$_POST['reg_padre'];
+    $madre_numero = (int)$_POST['madre'];
+    $madre_registro = (int)$_POST['reg_madre'];
+    $clasificacion = $_POST['clasificacion'];
+    $peso_205dias = (int)$_POST['peso_205'];
+    $altura_sacro_destete = (int)$_POST['alt_sacro'];
+    $peso_18meses = (int)$_POST['peso_18'];
+    $fecha_entrada_toro = date($_POST['fecha_toro']);
+    $peso_entrada_toro = (int)$_POST['peso_toro'];
+    $foto ="link de la foto";
+    
 
     $sql = "INSERT INTO `vaca`(`hacienda`, `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`, "
             . "`padre_registro`, `madre_numero`, `madre_registro`, `clasificacion`, `peso_205dias`, "
             . "altura_sacro_destete`, `peso_18meses`, `fecha_entrada_toro`, `peso_entrada_toro`) "
-            . "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            . "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param("i", $codigo_vaca)) {
+    if (!$sentencia->bind_param("iisisiiiisiiisis", $hacienda,$numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro,
+                $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto)) {
         $mensaje.= $mysqli->error;
     }
     
     if ($sentencia->execute()) {
-        $sentencia->bind_result($padre, $fecha_parto, $sexo, $numero_cria, $inter_parto, $fecha_destete, $peso_destete, 
-                $peso_205dias, $indice1, $peso_18meses, $indice2, $observaciones);
-        while ($sentencia->fetch()) {
-            $datos=[$padre, $fecha_parto, $sexo, $numero_cria, $inter_parto, $fecha_destete, $peso_destete, 
-                $peso_205dias, $indice1, $peso_18meses, $indice2, $observaciones];
-            $mensaje.=json_encode($datos);
-        }
+        $mensaje = ("Usuario registrado con éxito");
+    } else {
+        $mensaje = ("Error al registrar usuario");
     }
 //    $mensaje='["juan","pedro","jacinto"]';
     $sentencia->close();
