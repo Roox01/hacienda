@@ -1,7 +1,5 @@
 <?php  
-    
-    $vaca = $_SESSION['vaca'];
-    echo $vaca;
+    include 'controlador/seguridadUsuarioAdmin.php';
 ?> 
 <html>
     <head>
@@ -10,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="./css/bootstrap/css/bootstrap.min.css">
         <script type="text/javascript" src="./css/bootstrap/js/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="./css/bootstrap/js/bootstrap.min.js"></script>        
+        <script type="text/javascript" src="js/vaca.js"></script>        
         <title>Vista reproducción</title>
     </head>
     <body>

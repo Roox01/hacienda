@@ -56,7 +56,7 @@ and open the template in the editor.
             </div>
             <div id="secciones" style="overflow: hidden">
                 <div class="col-lg-4" style="border: 10px">
-                    <a>
+                    <a href="registro.php" id="registro">
                         <div id="left cuadro_info">
                             <h4>REGISTRO</h4>
                             <p></p>

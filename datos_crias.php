@@ -1,7 +1,7 @@
 <h4>Vaca N° 1234</h4>
 <div class="table-responsive">
     <form>
-        <table class="table-bordered" style="width: 100%">
+        <table class="table-bordered" style="width: 100%" id="cargar_crias">
             <tr style="text-align: center">
                 <td><strong>Padre</strong></td>
                 <td><strong>Fecha parto</strong></td>
@@ -35,3 +35,9 @@
         </table>
     </form>
 </div>
+<script>
+    $(document).ready(function () {
+        cargarCrias();
+    }
+    );
+</script>

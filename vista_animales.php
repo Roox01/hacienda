@@ -6,8 +6,6 @@ and open the template in the editor.
 -->
 <?php
 include 'controlador/seguridadUsuarioAdmin.php';
-
-echo $_SESSION['vaca'];
 ?>
 
 <html>

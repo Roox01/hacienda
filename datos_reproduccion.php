@@ -78,7 +78,7 @@
                     F
                 </td>
                 <td class="col-md-1" colspan="2">
-                    
+                    <input type="text" id="input_1">
                 </td>
                 <td class="col-md-2">
                     <input type="text" id="input_1" name="fecha_vez_1" value="----">
@@ -107,10 +107,10 @@
                     T
                 </td>
                 <td class="col-md-1">
-                    
+                    <input type="text" id="input_1">
                 </td>
                 <td class="col-md-1">
-                    
+                    <input type="text" id="input_1">
                 </td>
                 <td class="col-md-2">
                     <input type="text" id="input_1" name="toro_vez_1" value="----">
