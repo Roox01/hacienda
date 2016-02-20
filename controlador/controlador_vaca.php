@@ -125,7 +125,8 @@ function registrar(){
     $numero = (int)$_POST['numero'];
     $nombre = $_POST['nombre'];
     $registro = (int)$_POST['registro'];
-    $fecha_nacimiento = date($_POST['nacimiento']);
+    $fecha_nacimiento=$_POST['nacimiento'];
+    $nacimiento= date('y/m/d',$fecha_nacimiento);
     $padre_numero = (int)$_POST['padre'];
     $padre_registro = (int)$_POST['reg_padre'];
     $madre_numero = (int)$_POST['madre'];
@@ -147,20 +148,20 @@ function registrar(){
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param("iisisiiiisiiisis", $hacienda,$numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro,
+    if (!$sentencia->bind_param("iisisiiiisiiisis", $hacienda,$numero, $nombre, $registro, $nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro,
                 $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto)) {
         $mensaje.= $mysqli->error;
     }
     
     if ($sentencia->execute()) {
-        $mensaje = ("Usuario registrado con éxito");
+        $mensaje = ("Vaca registrada con éxito");
     } else {
-        $mensaje = ("Error al registrar usuario");
+        $mensaje = ("Error al registrar una nueva vaca");
     }
 //    $mensaje='["juan","pedro","jacinto"]';
     $sentencia->close();
     $mysqli->close();
-    echo $mensaje;
+    echo $mensaje+$nacimiento;
 }
 
 

@@ -53,11 +53,10 @@ function cargarCrias() {
 function registrar_vaca(){
     
     var nombre=$('#form_registrar_vaca #nombre').val();
-    console.log(nombre);
     var numero=$('#numero').val();
     var registro=$('#registro').val();
     var nacimiento=$('#nacimiento').val();
-    console.log(nacimiento);
+//    console.log(nacimiento.replace(/-/g, '/'));
     var padre=$('#padre').val();
     var reg_padre=$('#reg_padre').val();
     var madre=$('#madre').val();
@@ -74,6 +73,7 @@ function registrar_vaca(){
             padre:padre, reg_padre:reg_padre, madre:madre, reg_madre:reg_madre, clasificacion:clasificacion, peso_205:peso_205,
             alt_sacro:alt_sacro, peso_18:peso_18, fecha_toro:fecha_toro, peso_toro:peso_toro, opcion: "registrar"},
                 function (mensaje) {
+                    console.log(mensaje);
                     $('#resultados').html(mensaje);
                     
 //                    $('input').val('');
