@@ -138,13 +138,13 @@ function editar_fenotipo(clave,valor,vaca){
         $.post("controlador/controlador_vaca.php", {valor: valor, clave: clave, vaca: vaca, opcion: "editar_fenotipo"},
         function (mensaje) {
             $('#fenotipo').html(mensaje);
-//            alert(mensaje);
+            alert(mensaje);
         });
     }
     else {        
         $(this).focus();
         $('#fenotipo').html('Favor diligenciar el campo');
-//        alert('Favor diligenciar el campo');
+        alert('Favor diligenciar el campo');
     }
 }
 

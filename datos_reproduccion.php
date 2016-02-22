@@ -1,12 +1,10 @@
 <div class="col-md-12">
     <div class="col-md-offset-4 col-md-4">
-        <div class="col-md-6">
-            <p><strong>Nombre</strong></p>
-            <p><strong>Código</strong></p>
+        <div class="col-md-6">            
+            <h4><strong>Código</strong></h4>
         </div>
-        <div class="col-md-6">
-            <p>Josefa</p>
-            <p>1234</p>
+        <div class="col-md-6">            
+            <h4><?php echo $_SESSION['vaca'];?></h4>
         </div>
     </div>
     <div class="col-md-4">

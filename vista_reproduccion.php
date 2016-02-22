@@ -17,7 +17,22 @@
         ?>
         <div class="container" style="padding-top: 70px">
 
-            <h2>Sistema para la administración del ganado</h2>
+            <div class="col-sm-12">
+                <div class="col-sm-7">
+                    <h2>Sistema para la administración del ganado</h2>
+                    <input type="hidden" name="vaca" id="vaca" value="<?php echo $_SESSION['vaca'] ?>">
+                </div>
+                <div class="col-sm-5" style="margin-top: 2em">
+                    <form class="form-inline" action="controlador/consulta.php" method="post">
+                        <div class="form-group">
+                            <label for="vacas">Código animal</label>
+                            <input type="hidden" name="opcion" id="opcion" value="reproduccion">
+                            <input type="text" class="form-control" id="codigoVaca" name="codigoVaca" placeholder="Ver otro animal">
+                        </div>                        
+                        <button type="submit" class="btn btn-default" >Buscar</button>
+                    </form>
+                </div>
+            </div>
 
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="./vista_usuario_1.php">Inicio</a></li>
