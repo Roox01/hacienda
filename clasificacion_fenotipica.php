@@ -1,4 +1,3 @@
-<h4>Vaca N° <?php echo $_SESSION['vaca'] ?></h4>
 <div class="col-sm-8">
     <form>
         <table class="table-bordered interlineado_05" id="clasificacion_fenotipo">
@@ -10,7 +9,7 @@
                         <p>25</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_1" />
+                    <input type="text" id="car_racial_ap_general" maxlength="15" />
                 </td>
             </tr>
             <tr>
@@ -19,7 +18,7 @@
                         <p>10</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_2" />
+                    <input type="text" id="esqueleto" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -28,7 +27,7 @@
                         <p>2</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_3" />
+                    <input type="text" id="aplomos" maxlength="15" />
                 </td>
             </tr>
             <tr>
@@ -40,7 +39,7 @@
                         <p>4</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_4" />                
+                    <input type="text" id="largo" maxlength="15"/>                
                 </td>
             </tr>
             <tr>
@@ -49,7 +48,7 @@
                         <p>Pecho 2</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_5" />
+                    <input type="text" id="amplitud_pecho" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -58,7 +57,7 @@
                         <p>Lomo 3</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_6" />
+                    <input type="text" id="amplitud_lomo" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -67,7 +66,7 @@
                         <p>Anca 4</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_7" />
+                    <input type="text" id="amplitud_anca" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -76,16 +75,16 @@
                         <p>Toráx 3</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_8" />
+                    <input type="text" id="profundidad_torax" maxlength="15"/>
                 </td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>
                         <p>Profundidad</p>
-                        <p>Corazón 4</p>
+                        <p>Calzón 4</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_9" />
+                    <input type="text" id="profundidad_calzon" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -94,7 +93,7 @@
                         <p>9</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_10" />
+                    <input type="text" id="desarrollo" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -103,7 +102,7 @@
                         <p>5</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_11" />
+                    <input type="text" id="temperamento" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -112,7 +111,7 @@
                         <p>6</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_12" />
+                    <input type="text" id="musculo_grasa" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -124,7 +123,7 @@
                         <p>7</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_13" />
+                    <input type="text" id="ap_general" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -133,7 +132,7 @@
                         <p>3</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_14" />
+                    <input type="text" id="u_post" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -142,16 +141,16 @@
                         <p>3</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_15" />
+                    <input type="text" id="u_ant" maxlength="15"/>
                 </td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>
-                        <p>Pesón</p>
+                        <p>Pezón</p>
                         <p>5</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_16" />
+                    <input type="text" id="pezon" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -160,7 +159,7 @@
                         <p>3</p>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_17" />
+                    <input type="text" id="irrig" maxlength="15"/>
                 </td>
             </tr>
             <tr>
@@ -168,7 +167,7 @@
                         <h3><p>TOTAL</p></h3>
                     </strong></td>
                 <td class="col-sm-9">
-                    <input type="text" id="input_18" />
+                    <input type="text" id="total" maxlength="15"/>
                 </td>
             </tr>
 
@@ -184,11 +183,21 @@
             </a>
         </div>
     </div>
+    <div id="fenotipo"></div>
 </div>
 
 <script>
     $(document).ready(function () {
         clasificacionFenotipo();
-    }
-    );
+    });
+
+    $('#clasificacion_fenotipo input').click(function () {                
+        $(this).on('blur', function () {
+            var clave = $(this).attr('id');
+            var valor = $(this).val();
+            var codigoVaca=<?php echo $_SESSION['vaca'];?>;
+            console.log(clave+": "+valor);
+            editar_fenotipo(clave,valor,codigoVaca);
+        });
+    });
 </script>

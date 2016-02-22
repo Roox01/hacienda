@@ -31,12 +31,13 @@ include 'controlador/seguridadUsuarioAdmin.php';
                     <input type="hidden" name="vaca" id="vaca" value="<?php echo $_SESSION['vaca'] ?>">
                 </div>
                 <div class="col-sm-5" style="margin-top: 2em">
-                    <form class="form-inline">
+                    <form class="form-inline" action="controlador/consulta.php" method="post">
                         <div class="form-group">
                             <label for="vacas">Código animal</label>
-                            <input type="text" class="form-control" id="vacas" placeholder="Ver otro animal">
+                            <input type="hidden" name="opcion" id="opcion" value="consulta">
+                            <input type="text" class="form-control" id="codigoVaca" name="codigoVaca" placeholder="Ver otro animal">
                         </div>                        
-                        <button type="submit" class="btn btn-default">Buscar</button>
+                        <button type="submit" class="btn btn-default" >Buscar</button>
                     </form>
                 </div>
             </div>
@@ -48,7 +49,7 @@ include 'controlador/seguridadUsuarioAdmin.php';
                 <li role="presentation"><a href="?crias">Crías</a></li>
                 <li role="presentation"><a href="?clasif">Clasificación fenotípica</a></li>
             </ul>
-            <h4>Vaca N° 1234</h4>
+            <h4>Vaca N° <?php echo $_SESSION['vaca'] ?></h4>
             <?php
             $seccion = basename($_SERVER['QUERY_STRING']);
             if (empty($seccion)) {
@@ -81,5 +82,4 @@ include 'controlador/seguridadUsuarioAdmin.php';
         </div>
 
     </body>
-
 </html>

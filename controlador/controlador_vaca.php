@@ -21,21 +21,34 @@ if ($opcion == "registrar") {
     registrar();
 }
 
+if ($opcion == "registrar_cria") {
+    registrarCria();
+}
+
+if ($opcion == "editar_cria") {
+    editarCria();
+}
+
+if ($opcion == "editar_fenotipo") {
+    editarFenotipo();
+}
+
 function datos_generales() {
     if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
     $codigo_vaca = (int) $_POST['vaca'];
+    $hacienda = 1;
 
     $sql = "SELECT `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`, `padre_registro`,"
             . " `madre_numero`, `madre_registro`, `clasificacion`, `peso_205dias`, `altura_sacro_destete`,"
-            . " `peso_18meses`, `fecha_entrada_toro`, `peso_entrada_toro`, `foto` FROM `vaca` WHERE `numero`=?;";
+            . " `peso_18meses`, `fecha_entrada_toro`, `peso_entrada_toro`, `foto` FROM `vaca` WHERE `hacienda`=? AND`numero`=?;";
 
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param("i", $codigo_vaca)) {
+    if (!$sentencia->bind_param("ii", $hacienda, $codigo_vaca)) {
         $mensaje.= $mysqli->error;
     }
     if ($sentencia->execute()) {
@@ -90,7 +103,7 @@ function cargar_crias() {
     $mensaje = "";
     $codigo_vaca = (int) $_POST['vaca'];
 
-    $sql = "SELECT `padre`, `fecha_parto`, `sexo`, `numero_cria`, `inter_parto`, `fecha_destete`, `peso_destete`,"
+    $sql = "SELECT `padre`, `fecha_parto`, `sexo`, `numero_cria`, `inter_parto`,`peso_nacimiento`, `fecha_destete`, `peso_destete`,"
             . " `peso_205dias`, `indice1`, `peso_18meses`, `indice2`, `observaciones` FROM `cria` WHERE `id_vaca`=?";
 
     if (!$sentencia = $mysqli->prepare($sql)) {
@@ -101,16 +114,31 @@ function cargar_crias() {
     }
 
     if ($sentencia->execute()) {
-        $sentencia->bind_result($padre, $fecha_parto, $sexo, $numero_cria, $inter_parto, $fecha_destete, $peso_destete, $peso_205dias, $indice1, $peso_18meses, $indice2, $observaciones);
+        $sentencia->bind_result($padre, $fecha_parto, $sexo, $numero_cria, $inter_parto, $peso_nacimiento, $fecha_destete, $peso_destete, $peso_205dias, $indice1, $peso_18meses, $indice2, $observaciones);
         while ($sentencia->fetch()) {
-            $datos = [$padre, $fecha_parto, $sexo, $numero_cria, $inter_parto, $fecha_destete, $peso_destete,
-                $peso_205dias, $indice1, $peso_18meses, $indice2, $observaciones];
-            $mensaje.=json_encode($datos);
+            $mensaje.='<tr>
+                <td><input type="text" id="numero_cria' . $numero_cria . '" value="' . $numero_cria . '" disabled></td>
+                <td><input type="text" id="padre' . $numero_cria . '" value="' . $padre . '" disabled ></td>
+                <td><input type="text" id="fecha_parto' . $numero_cria . '" value="' . $fecha_parto . '" disabled></td>
+                <td><input type="text" id="sexo' . $numero_cria . '" value="' . $sexo . '" disabled></td>                
+                <td><input type="text" id="inter_parto' . $numero_cria . '" value="' . $inter_parto . '" disabled></td>
+                <td><input type="text" id="peso_nacimiento' . $numero_cria . '" value="' . $peso_nacimiento . '" disabled></td>
+                <td><input type="text" id="fecha_destete' . $numero_cria . '" value="' . $fecha_destete . '" onblur="editar_cria(&fecha_destete&,&' . $numero_cria . '&);"></td>
+                <td><input type="text" maxlength="5" id="peso_destete' . $numero_cria . '" value="' . $peso_destete . '"onblur="editar_cria(&peso_destete&,&' . $numero_cria . '&);"></td>
+                <td><input type="text" maxlength="5" id="peso_205dias' . $numero_cria . '" value="' . $peso_205dias . '"onblur="editar_cria(&peso_205dias&,&' . $numero_cria . '&);"></td>
+                <td><input type="text" maxlength="30" id="indice1' . $numero_cria . '" value="' . $indice1 . '"onblur="editar_cria(&indice1&,&' . $numero_cria . '&);"></td>
+                <td><input type="text" maxlength="5" id="peso_18meses' . $numero_cria . '" value="' . $peso_18meses . '"onblur="editar_cria(&peso_18meses&,&' . $numero_cria . '&);"></td>
+                <td><input type="text" maxlength="30" id="indice2' . $numero_cria . '" value="' . $indice2 . '"onblur="editar_cria(&indice2&,&' . $numero_cria . '&);"></td>
+                <td><input type="text" maxlength="50" id="observaciones' . $numero_cria . '" value="' . $observaciones . '"onblur="editar_cria(&observaciones&,&' . $numero_cria . '&);"></td>                
+            </tr>';
         }
+    } else {
+        $mensaje.='<tr colspan="13">LA VACA NO TIENE CRÍAS</tr>';
     }
 //    $mensaje='["juan","pedro","jacinto"]';
     $sentencia->close();
     $mysqli->close();
+    $mensaje = str_replace('&', "'", $mensaje);
     echo $mensaje;
 }
 
@@ -150,7 +178,7 @@ function registrar() {
 //        $mensaje.='Actualmente la vaca se encuentra registrada en la base de datos';
 //    }    
 //    echo $mensaje;
-    
+
 
 
     $sql = "INSERT INTO `vaca` (`hacienda`, `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`,"
@@ -165,13 +193,25 @@ function registrar() {
     }
 
     if ($sentencia->execute()) {
-        $mensaje = "Vaca registrada con éxito";
+        $mensaje=crearFenotipo($conexion,$numero);
+        $mensaje.= "Vaca registrada con éxito";
     } else {
-        $mensaje = "Error al registrar una nueva vaca".$sentencia->error;
+        $mensaje = "Error al registrar una nueva vaca. <br> La vaca se encuentra creada en la base de datos" ;
     }
+    
 
     $sentencia->close();
     $conexion->close();
+    echo $mensaje;
+}
+
+function crearFenotipo($conexion,$numero){
+    $sql = "INSERT INTO `fenotipo`(`id_vaca`) VALUES ($numero)";
+    if(mysqli_query($conexion, $sql)){
+        $mensaje.='Fenotipo creado automáticamente';
+    }else{
+        $mensaje.='Actualmente el fenotipo se encuentra creado en la base de datos';
+    }    
     echo $mensaje;
 }
 
@@ -180,41 +220,108 @@ function registrarCria() {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
-    
-    $id_vaca= (int) $_POST['id_vaca'];
-    $padre = (int) $_POST['numero'];    
-    $fecha_parto = date('Y-m-d', strtotime($_POST['parto']));
-    $sexo = (int) $_POST['padre'];
-    $numero_cria = (int) $_POST['reg_padre'];
-    $inter_parto = $_POST['madre'];
-    $fecha_destete =  date('Y-m-d', strtotime($_POST['reg_madre']));
-    $peso_destete =(int)$_POST['clasificacion'];
-    $peso_205dias = (int) $_POST['peso_205'];
-    $indice1 = $_POST['alt_sacro'];
-    $peso_18meses = (int)$_POST['peso_18'];
-    $indice2 = ($_POST['fecha_toro']);
+
+    $id_vaca = (int) $_POST['madre'];
+    $padre = (int) $_POST['padre'];
+    $fecha_parto = date('Y-m-d', strtotime($_POST['nacimiento']));
+    $sexo = $_POST['sexo'];
+    $numero_cria = $_POST['numero'];
+    $inter_parto = $_POST['inter_parto'];
+    $peso_nacimiento = (int) $_POST['peso_nacimiento'];
+    $fecha_destete = $_POST['fecha_destete'];
+    $peso_destete = $_POST['peso_destete'];
+    $peso_205dias = $_POST['peso_205dias'];
+    $indice1 = $_POST['indice1'];
+    $peso_18meses = $_POST['peso_18meses'];
+    $indice2 = $_POST['indice2'];
     $observaciones = $_POST['observaciones'];
 
 
 
-    $sql = "INSERT INTO `cria`(`id_vaca`, `padre`, `fecha_parto`, `sexo`, `numero_cria`, `inter_parto`, `fecha_destete`,"
+    $sql = "INSERT INTO `cria`(`id_vaca`, `padre`, `fecha_parto`, `sexo`, `numero_cria`, `inter_parto`,`peso_nacimiento`, `fecha_destete`,"
             . " `peso_destete`, `peso_205dias`, `indice1`, `peso_18meses`, `indice2`, `observaciones`)"
-            . " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            . " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     if (!$sentencia = $conexion->prepare($sql)) {
         $mensaje.= $conexion->error;
     }
-    if (!$sentencia->bind_param("iisiissiisiss", $hacienda, $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $observaciones)) {
+    if (!$sentencia->bind_param("iissssisiisiss", $id_vaca, $padre, $fecha_parto, $sexo, $numero_cria, $inter_parto, $peso_nacimiento, $fecha_destete, $peso_destete, $peso_205dias, $indice1, $peso_18meses, $indice2, $observaciones)) {
         $mensaje.= $conexion->error;
     }
 
     if ($sentencia->execute()) {
-        $mensaje = "Vaca registrada con éxito";
+        $mensaje = "Cría registrada con éxito";
     } else {
-        $mensaje = "Error al registrar una nueva vaca".$sentencia->error;
+        $mensaje = "Error al registrar una nueva cría" . $sentencia->error;
     }
 
     $sentencia->close();
     $conexion->close();
+    echo $mensaje;
+}
+
+function editarCria() {
+    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+        die("Error al conectarse a la base de datos");
+    }
+    $mensaje = "";
+    $clave = $_POST['clave'];
+    $numero_cria = $_POST['numero_cria'];
+
+    $pos = stripos($clave, 'peso');
+
+    if ($pos !== false) {
+        $param="is";
+        $valor = (int) $_POST['valor'];
+    } else {
+        $param="ss";
+        $valor = $_POST['valor'];
+    }
+
+    $sql = "UPDATE cria c SET c." . $clave . "=? WHERE c.numero_cria=? ;";
+
+    if (!$sentencia = $mysqli->prepare($sql)) {
+        $mensaje.= $mysqli->error;
+    }
+    if (!$sentencia->bind_param($param, $valor, $numero_cria)) {
+        $mensaje.= $mysqli->error;
+    }
+    if (!$sentencia->execute()) {
+        $mensaje .= "No se ha podido actualizar";
+    } else {
+        $mensaje = "Campo actualizado";
+        if ($sentencia->affected_rows === 0) {
+            $mensaje = "No se ha cambiado la información";
+        }
+    }
+    $sentencia->close();
+    $mysqli->close();
+    echo $mensaje;
+}
+
+function editarFenotipo() {
+    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+        die("Error al conectarse a la base de datos");
+    }
+    $mensaje = "";
+    $clave = $_POST['clave'];
+    $vaca = $_POST['vaca'];
+    $valor = $_POST['valor'];
+    
+    $sql = "UPDATE fenotipo f SET f." . $clave . "=? WHERE f.id_vaca=? ;";
+
+    if (!$sentencia = $mysqli->prepare($sql)) {
+        $mensaje.= $mysqli->error;
+    }
+    if (!$sentencia->bind_param('ss', $valor, $vaca)) {
+        $mensaje.= $mysqli->error;
+    }
+    if (!$sentencia->execute()) {
+        $mensaje .= "No se ha podido actualizar";
+    } else {
+        $mensaje = "Campo actualizado";        
+    }
+    $sentencia->close();
+    $mysqli->close();
     echo $mensaje;
 }
 ?>

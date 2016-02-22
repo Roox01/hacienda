@@ -1,4 +1,3 @@
-<h4>Vaca N° <?php echo $_SESSION['vaca'] ?></h4>
 <div class="col-sm-8">
     <form>
         <table class="table col-sm-8" id="datos_generales">
@@ -36,19 +35,19 @@
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Clasificación</strong></td>
-                <td class="col-sm-9 res"><input type="text" id="input_8" ></td>
+                <td class="col-sm-9 res"><input type="text" id="input_8" maxlength="30"></td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Peso ajust. 205 días</strong></td>
-                <td class="col-sm-9 res"><input type="text" id="input_9" ></td>
+                <td class="col-sm-9 res"><input type="text" id="input_9" maxlength="5"></td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Altura sacro (Destete)</strong></td>
-                <td class="col-sm-9 res"><input type="text" id="input_10" ></td>
+                <td class="col-sm-9 res"><input type="text" id="input_10" maxlength="5"></td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Peso ajust. 18 meses</strong></td>
-                <td class="col-sm-9 res"><input type="text" id="input_11" ></td>
+                <td class="col-sm-9 res"><input type="text" id="input_11" maxlength="5"></td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Fecha entrada a Toro</strong></td>
@@ -56,7 +55,7 @@
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Peso entrada a Toro</strong></td>
-                <td class="col-sm-9 res"><input type="text" id="input_13" ></td>
+                <td class="col-sm-9 res"><input type="text" id="input_13" maxlength="5"></td>
             </tr>
         </table>
 
