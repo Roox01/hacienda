@@ -174,5 +174,48 @@ function registrar() {
     $conexion->close();
     echo $mensaje;
 }
+
+function registrarCria() {
+    if (!$conexion = new mysqli("localhost", "root", "", "hacienda")) {
+        die("Error al conectarse a la base de datos");
+    }
+    $mensaje = "";
+    
+    $id_vaca= (int) $_POST['id_vaca'];
+    $padre = (int) $_POST['numero'];    
+    $fecha_parto = date('Y-m-d', strtotime($_POST['parto']));
+    $sexo = (int) $_POST['padre'];
+    $numero_cria = (int) $_POST['reg_padre'];
+    $inter_parto = $_POST['madre'];
+    $fecha_destete =  date('Y-m-d', strtotime($_POST['reg_madre']));
+    $peso_destete =(int)$_POST['clasificacion'];
+    $peso_205dias = (int) $_POST['peso_205'];
+    $indice1 = $_POST['alt_sacro'];
+    $peso_18meses = (int)$_POST['peso_18'];
+    $indice2 = ($_POST['fecha_toro']);
+    $observaciones = $_POST['observaciones'];
+
+
+
+    $sql = "INSERT INTO `cria`(`id_vaca`, `padre`, `fecha_parto`, `sexo`, `numero_cria`, `inter_parto`, `fecha_destete`,"
+            . " `peso_destete`, `peso_205dias`, `indice1`, `peso_18meses`, `indice2`, `observaciones`)"
+            . " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    if (!$sentencia = $conexion->prepare($sql)) {
+        $mensaje.= $conexion->error;
+    }
+    if (!$sentencia->bind_param("iisiissiisiss", $hacienda, $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $observaciones)) {
+        $mensaje.= $conexion->error;
+    }
+
+    if ($sentencia->execute()) {
+        $mensaje = "Vaca registrada con éxito";
+    } else {
+        $mensaje = "Error al registrar una nueva vaca".$sentencia->error;
+    }
+
+    $sentencia->close();
+    $conexion->close();
+    echo $mensaje;
+}
 ?>
 
