@@ -56,7 +56,7 @@ function registrar_vaca(){
     var numero=$('#numero').val();
     var registro=$('#registro').val();
     var nacimiento=$('#nacimiento').val();
-//    console.log(nacimiento.replace(/-/g, '/'));
+    console.log(nacimiento);
     var padre=$('#padre').val();
     var reg_padre=$('#reg_padre').val();
     var madre=$('#madre').val();
@@ -74,9 +74,7 @@ function registrar_vaca(){
             alt_sacro:alt_sacro, peso_18:peso_18, fecha_toro:fecha_toro, peso_toro:peso_toro, opcion: "registrar"},
                 function (mensaje) {
                     console.log(mensaje);
-                    $('#resultados').html(mensaje);
-                    
-//                    $('input').val('');
+                    $('#resultados').html(mensaje);                    
                 });        
     }
     else{
