@@ -80,7 +80,7 @@ and open the template in the editor.
                         <form class="form-horizontal" action="controlador/consulta.php" method="POST">
                             <div class="form-group">                                
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" name="codigoVaca" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca">
+                                    <input type="text" class="form-control" name="codigoVaca" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca" autofocus="autofocus"/>
                                     <input type="hidden" name="opcion" id="opcion" value="consulta">
                                 </div>
                             </div>                       
@@ -108,7 +108,7 @@ and open the template in the editor.
                         <form class="form-horizontal" action="controlador/consulta.php" method="POST">
                             <div class="form-group">                                
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" name="codigoVaca" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca">
+                                    <input type="text" class="form-control" name="codigoVaca" id="inputCodigoVaca" placeholder="Ingrese aquí el código de la vaca" autofocus="autofocus"/>
                                     <input type="hidden" name="opcion" id="opcion" value="reproduccion">
 
                                 </div>
