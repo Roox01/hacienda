@@ -1,9 +1,10 @@
 <?php
-
+session_start();
 require_once 'conexionMySqli.php';
 require_once '../modelo/vaca.php';
 
 $opcion = $_POST['opcion'];
+
 
 if ($opcion == "datos_generales") {
     datos_generales();
@@ -33,22 +34,27 @@ if ($opcion == "editar_fenotipo") {
     editarFenotipo();
 }
 
+if ($opcion == "editar_vaca") {
+    editarVaca();
+}
+
 function datos_generales() {
     if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
     $codigo_vaca = (int) $_POST['vaca'];
-    $hacienda = 1;
+    $hacienda = $_SESSION['hacienda'];
+    
 
-    $sql = "SELECT `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`, `padre_registro`,"
-            . " `madre_numero`, `madre_registro`, `clasificacion`, `peso_205dias`, `altura_sacro_destete`,"
-            . " `peso_18meses`, `fecha_entrada_toro`, `peso_entrada_toro`, `foto` FROM `vaca` WHERE `hacienda`=? AND`numero`=?;";
+    $sql = "SELECT `numero`, v.`nombre`, `registro`, `fecha_nacimiento`, `padre_numero`, `padre_registro`, `madre_numero`, `madre_registro`,"
+            . " `clasificacion`, `peso_205dias`, `altura_sacro_destete`, `peso_18meses`, `fecha_entrada_toro`, `peso_entrada_toro`, `foto`"
+            . " FROM `vaca` v, `hacienda` h WHERE v.numero=? and h.id=v.hacienda and h.nombre=?;";
 
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param("ii", $hacienda, $codigo_vaca)) {
+    if (!$sentencia->bind_param("is",$codigo_vaca,$hacienda)) {
         $mensaje.= $mysqli->error;
     }
     if ($sentencia->execute()) {
@@ -70,15 +76,17 @@ function clasificacion_fenotipo() {
     }
     $mensaje = "";
     $codigo_vaca = (int) $_POST['vaca'];
+    $hacienda = $_SESSION['hacienda'];
 
-    $sql = "SELECT `car_racial_ap_general`, `esqueleto`, `aplomos`, `largo`, `amplitud_pecho`, `amplitud_lomo`,"
-            . " `amplitud_anca`, `profundidad_torax`, `profundidad_calzon`, `desarrollo`, `temperamento`, `musculo_grasa`,"
-            . " `ap_general`, `u_post`, `u_ant`, `pezon`, `irrig`, `total` FROM `fenotipo` WHERE `id_vaca`=? ;";
+    $sql = "SELECT `car_racial_ap_general`, `esqueleto`, `aplomos`, `largo`, `amplitud_pecho`, `amplitud_lomo`, `amplitud_anca`,"
+            . " `profundidad_torax`, `profundidad_calzon`, `desarrollo`, `temperamento`, `musculo_grasa`, `ap_general`, `u_post`,"
+            . " `u_ant`, `pezon`, `irrig`, `total` FROM `fenotipo` f, `hacienda` h, `vaca` v "
+            . "WHERE f.id_vaca=? and f.id_vaca=v.numero and v.hacienda=h.id and h.nombre=?;";
 
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param("i", $codigo_vaca)) {
+    if (!$sentencia->bind_param("is", $codigo_vaca, $hacienda)) {
         $mensaje.= $mysqli->error;
     }
 
@@ -288,10 +296,7 @@ function editarCria() {
     if (!$sentencia->execute()) {
         $mensaje .= "No se ha podido actualizar";
     } else {
-        $mensaje = "Campo actualizado";
-        if ($sentencia->affected_rows === 0) {
-            $mensaje = "No se ha cambiado la información";
-        }
+        $mensaje = "Campo actualizado";        
     }
     $sentencia->close();
     $mysqli->close();
@@ -319,6 +324,42 @@ function editarFenotipo() {
         $mensaje .= "No se ha podido actualizar";
     } else {
         $mensaje = "Campo actualizado";        
+    }
+    $sentencia->close();
+    $mysqli->close();
+    echo $mensaje;
+}
+
+function editarVaca() {
+    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+        die("Error al conectarse a la base de datos");
+    }
+    $mensaje = "";
+    $clave = $_POST['clave'];
+    $vaca = $_POST['vaca'];
+
+    $pos = stripos($clave, 'peso');
+
+    if ($pos !== false) {
+        $param="is";
+        $valor = (int) $_POST['valor'];
+    } else {
+        $param="ss";
+        $valor = $_POST['valor'];
+    }
+
+    $sql = "UPDATE vaca v SET v." . $clave . "=? WHERE v.numero=? ;";
+
+    if (!$sentencia = $mysqli->prepare($sql)) {
+        $mensaje.= $mysqli->error;
+    }
+    if (!$sentencia->bind_param($param, $valor, $vaca)) {
+        $mensaje.= $mysqli->error;
+    }
+    if (!$sentencia->execute()) {
+        $mensaje .= "No se ha podido actualizar";
+    } else {
+        $mensaje = "Campo actualizado";
     }
     $sentencia->close();
     $mysqli->close();

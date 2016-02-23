@@ -1,3 +1,10 @@
+function cargar_haciendas() {
+    $.post("controlador/controlador_hacienda.php", {opcion: "haciendas"},
+    function (mensaje) {
+        $('#hacienda').append(mensaje);
+    });
+}
+
 function cargarDatosGenerales() {
     var vaca = $('#vaca').val();
     if (vaca != "") {
@@ -133,17 +140,17 @@ function editar_cria(clave, numero_cria) {
     }
 }
 
-function editar_fenotipo(clave,valor,vaca){
+function editar(clave, valor, vaca, opcion) {
     if (valor !== '') {
-        $.post("controlador/controlador_vaca.php", {valor: valor, clave: clave, vaca: vaca, opcion: "editar_fenotipo"},
+        $.post("controlador/controlador_vaca.php", {valor: valor, clave: clave, vaca: vaca, opcion: opcion},
         function (mensaje) {
-            $('#fenotipo').html(mensaje);
+            $('#res').html(mensaje);
             alert(mensaje);
         });
     }
-    else {        
+    else {
         $(this).focus();
-        $('#fenotipo').html('Favor diligenciar el campo');
+        $('#res').html('Favor diligenciar el campo');
         alert('Favor diligenciar el campo');
     }
 }

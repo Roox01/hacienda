@@ -35,27 +35,27 @@
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Clasificación</strong></td>
-                <td class="col-sm-9 res"><input type="text" id="input_8" maxlength="30"></td>
+                <td class="col-sm-9 res"><input type="text" id="clasificacion" maxlength="30" onclick="editar_vaca('#clasificacion');"></td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Peso ajust. 205 días</strong></td>
-                <td class="col-sm-9 res"><input type="text" id="input_9" maxlength="5"></td>
+                <td class="col-sm-9 res"><input type="number" id="peso_205dias" maxlength="5" onclick="editar_vaca('#peso_205dias');"></td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Altura sacro (Destete)</strong></td>
-                <td class="col-sm-9 res"><input type="text" id="input_10" maxlength="5"></td>
+                <td class="col-sm-9 res"><input type="number" id="altura_sacro" maxlength="5" onclick="editar_vaca('#altura_sacro');"></td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Peso ajust. 18 meses</strong></td>
-                <td class="col-sm-9 res"><input type="text" id="input_11" maxlength="5"></td>
+                <td class="col-sm-9 res"><input type="number" id="peso_18meses" maxlength="5" onclick="editar_vaca('#peso_18meses');"></td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Fecha entrada a Toro</strong></td>
-                <td class="col-sm-9 res"><input type="text" id="input_12" ></td>
+                <td class="col-sm-9 res"><input type="date" id="fecha_toro" onclick="editar_vaca('#fecha_toro');"></td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Peso entrada a Toro</strong></td>
-                <td class="col-sm-9 res"><input type="text" id="input_13" maxlength="5"></td>
+                <td class="col-sm-9 res"><input type="number" id="peso_toro" maxlength="5" onclick="editar_vaca('#peso_toro');"></td>
             </tr>
         </table>
 
@@ -93,9 +93,21 @@
     <ul id="cargar_datos_generales" class="col-sm-8 visible-lg visible-md" style="list-style: none; line-height: 2">        
     </ul>
 </div>
+<div id="res"></div>
 <script>
     $(document).ready(function () {
         cargarDatosGenerales();
+    });
+
+    function editar_vaca(item) {
+        $(this).on('blur', function () {
+            var clave = $(item).attr('id');
+            var valor = $(item).val();
+            var codigoVaca=<?php echo $_SESSION['vaca'];?>;
+            console.log(clave+": "+valor);
+            editar(clave,valor,codigoVaca,'editar_vaca');
+        });
     }
-    );
+
+
 </script>

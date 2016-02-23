@@ -22,8 +22,8 @@ and open the template in the editor.
         ?>
         <div class="container">
             <div class="jumbotron" id="jumbotron">
-                <h1>Bienvenido!</h1>
-                <p>Bienvenido al sistema para la gestión de ganado</p>
+                <h1><?php echo $_SESSION["hacienda"];?></h1>
+                <p>Bienvenido <?php echo $_SESSION["nombre"];?> al sistema para la gestión de ganado</p>
             </div>
             <div id="secciones" style="overflow: hidden">
                 <div class="col-lg-4" style="border: 10px">

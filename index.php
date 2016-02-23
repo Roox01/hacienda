@@ -9,7 +9,11 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="./css/estilos_generales.css">
         <link rel="stylesheet" type="text/css" href="./css/bootstrap/css/bootstrap.min.css">
-        <title></title>
+        <script type="text/javascript" src="css/bootstrap/js/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="css/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/vaca.js"></script>
+        <title>Sistema de gestión de ganado vacuno</title>
+
     </head>
     <body>
         <div class="container">
@@ -18,6 +22,13 @@ and open the template in the editor.
                     <img id="imagen_login" src="./imagenes/fondo_1.jpg">
                 </div>
                 <form class="form-horizontal" action="controlador/loginUsuario.php" method="POST">
+                    <div class="form-group">
+                        <label for="hacienda" class="col-sm-1 control-label"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></label>
+                        <div class="col-sm-11">
+                            <select id="hacienda" name="hacienda" style="width: 100%" class="form-control">
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="user" class="col-sm-1 control-label"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></label>
                         <div class="col-sm-11">
@@ -29,7 +40,7 @@ and open the template in the editor.
                         <div class="col-sm-11">
                             <input id="password" name="password" type="password" class="form-control" placeholder="Contraseña" required>
                         </div>
-                    </div>
+                    </div>                    
                     <div class="form-group" style="text-align: center;margin-left: -10%">
                         <div class="col-sm-offset-1 col-sm-11">
                             <div class="checkbox">
@@ -47,6 +58,10 @@ and open the template in the editor.
                 </form>
             </div>    
         </div>
-        
-    </body>
+        <script>
+            $(document).ready(function () {  
+                cargar_haciendas();                
+            });
+        </script>
+    </body>    
 </html>

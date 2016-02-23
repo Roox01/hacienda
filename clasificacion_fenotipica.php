@@ -183,7 +183,7 @@
             </a>
         </div>
     </div>
-    <div id="fenotipo"></div>
+    <div id="res"></div>
 </div>
 
 <script>
@@ -197,7 +197,7 @@
             var valor = $(this).val();
             var codigoVaca=<?php echo $_SESSION['vaca'];?>;
             console.log(clave+": "+valor);
-            editar_fenotipo(clave,valor,codigoVaca);
+            editar(clave,valor,codigoVaca,'editar_fenotipo');
         });
     });
 </script>
