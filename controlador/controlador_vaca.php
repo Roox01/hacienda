@@ -110,14 +110,16 @@ function cargar_crias() {
     }
     $mensaje = "";
     $codigo_vaca = (int) $_POST['vaca'];
+    $hacienda = $_SESSION['hacienda'];
 
-    $sql = "SELECT `padre`, `fecha_parto`, `sexo`, `numero_cria`, `inter_parto`,`peso_nacimiento`, `fecha_destete`, `peso_destete`,"
-            . " `peso_205dias`, `indice1`, `peso_18meses`, `indice2`, `observaciones` FROM `cria` WHERE `id_vaca`=?";
+    $sql = "SELECT c.`padre`, `fecha_parto`, `sexo`, `numero_cria`, `inter_parto`, `peso_nacimiento`, `fecha_destete`,"
+            . " `peso_destete`, c.`peso_205dias`, `indice1`, c.`peso_18meses`, `indice2`, c.`observaciones` "
+            . "FROM `cria` c, `hacienda` h, `vaca` v WHERE c.id_vaca=? and c.id_vaca=v.numero and v.hacienda=h.id and h.nombre=?;";
 
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param("i", $codigo_vaca)) {
+    if (!$sentencia->bind_param("is", $codigo_vaca,$hacienda)) {
         $mensaje.= $mysqli->error;
     }
 

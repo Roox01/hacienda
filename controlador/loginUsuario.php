@@ -21,8 +21,8 @@ require_once('conexionMySqli.php');
 
 try {
     //preparacion de la consulta
-    $sql = "SELECT usuario.nombre_usuario, usuario.password 
-        FROM usuario WHERE usuario.nombre_usuario=? AND usuario.password =?";
+    $sql = "SELECT u.`nombre_usuario`,  u.`password`, `hacienda` FROM `usuario` u ,`hacienda` h 
+        WHERE u.`nombre_usuario`=? and u.`password` =? and `hacienda`=h.id and h.nombre=?";
 
     //PREPARAMOS EL PROCEDIMIENTO
     if (!$sentencia = $mysqli->prepare($sql)) {
@@ -30,7 +30,7 @@ try {
     }
 
     //LE PASAMOS LOS PARAMETROS; "SS" SIGNIFICA QUE SON STRINGS
-    if (!$sentencia->bind_param("ss", $user, $pass)) {
+    if (!$sentencia->bind_param("sss", $user, $pass, $hacienda)) {
         print $mysqli->error;
     }
 
