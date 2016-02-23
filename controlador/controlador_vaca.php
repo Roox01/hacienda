@@ -157,7 +157,7 @@ function registrar() {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
-    $hacienda = 1;
+    $hacienda = $_SESSION['hacienda'];
     $numero = (int) $_POST['numero'];
     $nombre = $_POST['nombre'];
     $registro = (int) $_POST['registro'];
@@ -191,14 +191,14 @@ function registrar() {
 
 
 
-    $sql = "INSERT INTO `vaca` (`hacienda`, `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`,"
-            . " `padre_registro`, `madre_numero`, `madre_registro`, `clasificacion`, `peso_205dias`, `altura_sacro_destete`,"
-            . " `peso_18meses`, `fecha_entrada_toro`, `peso_entrada_toro`, `foto`, `observaciones`) "
-            . "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+    $sql = "INSERT INTO `vaca`(`hacienda`, `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`, `padre_registro`, `madre_numero`, "
+            . "`madre_registro`, `clasificacion`, `peso_205dias`, `altura_sacro_destete`, `peso_18meses`, `fecha_entrada_toro`, "
+            . "`peso_entrada_toro`, `foto`, `observaciones`) "
+            . "SELECT h.`id`,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? FROM `hacienda` h WHERE h.`nombre`=?;";
     if (!$sentencia = $conexion->prepare($sql)) {
         $mensaje.= $conexion->error;
     }
-    if (!$sentencia->bind_param("iisisiiiisiiisiss", $hacienda, $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $observaciones)) {
+    if (!$sentencia->bind_param("isisiiiisiiisisss", $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $observaciones,$hacienda)) {
         $mensaje.= $conexion->error;
     }
 
@@ -209,13 +209,13 @@ function registrar() {
         $mensaje = "Error al registrar una nueva vaca. <br> La vaca se encuentra creada en la base de datos" ;
     }
     
-
     $sentencia->close();
     $conexion->close();
     echo $mensaje;
 }
 
 function crearFenotipo($conexion,$numero){
+    $mensaje='';
     $sql = "INSERT INTO `fenotipo`(`id_vaca`) VALUES ($numero)";
     if(mysqli_query($conexion, $sql)){
         $mensaje.='Fenotipo creado automáticamente';
