@@ -94,8 +94,8 @@ function registrar_cria() {
     var padre = $('#padre').val();
     var nacimiento = $('#nacimiento').val();
     var sexo = $('input[name="sexo"]:checked').val();
-    var peso_nacimiento = $('peso_nacimiento').val();
-//    console.log(sexo);
+    var peso_nacimiento = $('#peso_nacimiento').val();
+    console.log(peso_nacimiento);
     var inter_parto = $('#inter_parto').val();
     var observaciones = $('#observaciones').val();
     var fecha_destete = $('#fecha_destete').val();

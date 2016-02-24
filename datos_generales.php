@@ -43,7 +43,7 @@
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Altura sacro (Destete)</strong></td>
-                <td class="col-sm-9 res"><input type="number" id="altura_sacro" maxlength="5" onclick="editar_vaca('#altura_sacro');"></td>
+                <td class="col-sm-9 res"><input type="number" id="altura_sacro_destete" maxlength="5" onclick="editar_vaca('#altura_sacro_destete');"></td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Peso ajust. 18 meses</strong></td>
@@ -51,11 +51,11 @@
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Fecha entrada a Toro</strong></td>
-                <td class="col-sm-9 res"><input type="date" id="fecha_toro" onclick="editar_vaca('#fecha_toro');"></td>
+                <td class="col-sm-9 res"><input type="date" id="fecha_entrada_toro" onclick="editar_vaca('#fecha_entrada_toro');"></td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Peso entrada a Toro</strong></td>
-                <td class="col-sm-9 res"><input type="number" id="peso_toro" maxlength="5" onclick="editar_vaca('#peso_toro');"></td>
+                <td class="col-sm-9 res"><input type="number" id="peso_entrada_toro" maxlength="5" onclick="editar_vaca('#peso_entrada_toro');"></td>
             </tr>
         </table>
 
