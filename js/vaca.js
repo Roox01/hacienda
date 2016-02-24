@@ -155,4 +155,16 @@ function editar(clave, valor, vaca, opcion) {
     }
 }
 
+function cargar_reproduccion(){
+    var vaca = $('#vaca').val();
+    if (vaca != "") {
+        $.post("controlador/controlador_vaca.php", {vaca: vaca, opcion: "cargar_reproduccion"},
+        function (mensaje) {
+           $('#datos_reproduccion tbody').append(mensaje);
+        });
+    } else {
+        alert("No existe vaca");
+    }
+}
+
 

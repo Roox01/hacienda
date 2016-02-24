@@ -4,7 +4,7 @@
             <h4><strong>Código</strong></h4>
         </div>
         <div class="col-md-6">            
-            <h4><?php echo $_SESSION['vaca'];?></h4>
+            <h4><?php echo $_SESSION['vaca']; ?></h4>
         </div>
     </div>
     <div class="col-md-4">
@@ -13,125 +13,68 @@
 </div>
 <div class="col-md-12">
     <form>
-        <table class="table-bordered">
-            <tr style="text-align: center">
-                <td class="col-md-4" colspan="3">
-                    <strong>Programación</strong>
-                </td>
-                <td class="col-md-4" colspan="4">
-                    <strong>INSEMINACIÓN O MONTA NATURAL</strong>
-                </td>
-                <td class="col-md-4" colspan="3">
-                    <strong>Vaca N°</strong>
-                </td>
-            </tr>
-            <tr style="text-align: center">
-                <td class="col-md-1" rowspan="2">
+        <table class="table-bordered table-responsive" id="datos_reproduccion" >
+            <thead>
+                <tr style="text-align: center">
+                    <td class="col-md-4" colspan="3">
+                        <strong>Programación</strong>
+                    </td>
+                    <td class="col-md-4" colspan="4">
+                        <strong>INSEMINACIÓN O MONTA NATURAL</strong>
+                    </td>
+                    <td class="col-md-4" colspan="3">
+                        <strong>Vaca N°</strong>
+                    </td>
+                </tr>
+                <tr style="text-align: center">
+                    <td class="col-md-1" rowspan="2">
 
-                </td>
-                <td class="col-md-1" rowspan="2">
-                    I.A.
-                </td>
-                <td class="col-md-1" rowspan="2">
-                    M.N.
-                </td>
-                <td class="col-md-2">
-                    1 I.A.
-                </td>
-                <td class="col-md-2">
-                    2 I.A.
-                </td>
-                <td class="col-md-1">
-                    3 I.A.
-                </td>
-                <td class="col-md-1" rowspan="2">
-                    M.N.
-                </td>
-                <td class="col-md-3" colspan="3">
-                    Palpaciones
-                </td>
-            </tr>
-            <tr>           
-                <td class="col-md-2">
+                    </td>
+                    <td class="col-md-1" rowspan="2">
+                        I.A.
+                    </td>
+                    <td class="col-md-1" rowspan="2">
+                        M.N.
+                    </td>
+                    <td class="col-md-2">
+                        1 I.A.
+                    </td>
+                    <td class="col-md-2">
+                        2 I.A.
+                    </td>
+                    <td class="col-md-1">
+                        3 I.A.
+                    </td>
+                    <td class="col-md-1" rowspan="2">
+                        M.N.
+                    </td>
+                    <td class="col-md-3" colspan="3">
+                        Palpaciones
+                    </td>
+                </tr>
+                <tr>           
+                    <td class="col-md-2">
 
-                </td>
-                <td class="col-md-2">
+                    </td>
+                    <td class="col-md-2">
 
-                </td>
-                <td class="col-md-1">
-                    M.N. 
-                </td>
-                <td class="col-md-1" style="text-align: center">
-                    1<sup>a</sup>
-                </td>
-                <td class="col-md-1" style="text-align: center">
-                    2<sup>a</sup>
-                </td>
-                <td class="col-md-1" style="text-align: center">
-                    3<sup>a</sup>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-1 no-padding">
-                    F
-                </td>
-                <td class="col-md-1" colspan="2">
-                    <input type="text" id="input_1">
-                </td>
-                <td class="col-md-2">
-                    <input type="text" id="input_1" name="fecha_vez_1" value="----">
-                </td>
-                <td class="col-md-2">
-                    <input type="text" id="input_2" name="fecha_vez_2" value="----">
-                </td>
-                <td class="col-md-1">
-                    <input type="text" id="input_3" name="fecha_vez_3" value="----">
-                </td>
-                <td class="col-md-1">
-                    <input type="text" id="input_4" name="fecha_M_N" value="----">
-                </td>
-                <td class="col-md-1 no-padding">
-                    F <input type="text" id="input_5" name="fecha_palpacion_1" value="----">
-                </td>
-                <td class="col-md-1 no-padding">
-                    F <input type="text" id="input_5" name="fecha_palpacion_2" value="----">
-                </td>
-                <td class="col-md-1 no-padding">
-                    F <input type="text" id="input_5" name="fecha_palpacion_3" value="----">
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-1 no-padding">
-                    T
-                </td>
-                <td class="col-md-1">
-                    <input type="text" id="input_1">
-                </td>
-                <td class="col-md-1">
-                    <input type="text" id="input_1">
-                </td>
-                <td class="col-md-2">
-                    <input type="text" id="input_1" name="toro_vez_1" value="----">
-                </td>
-                <td class="col-md-2">
-                    <input type="text" id="input_1" name="toro_vez_2" value="----">
-                </td>
-                <td class="col-md-1">
-                    <input type="text" id="input_1" name="toro_vez_3" value="----">
-                </td>
-                <td class="col-md-1">
-                    <input type="text" id="input_1" name="toro_M_N" value="----">
-                </td>
-                <td class="col-md-1 no-padding">
-                    R <input type="text" id="input_5" name="resultado_palpacion_1" value="----">
-                </td>
-                <td class="col-md-1 no-padding">
-                    R <input type="text" id="input_5" name="resultado_palpacion_2" value="----">
-                </td>
-                <td class="col-md-1 no-padding">
-                    R <input type="text" id="input_5" name="resultado_palpacion_3" value="----">
-                </td>
-            </tr>
+                    </td>
+                    <td class="col-md-1">
+                        M.N. 
+                    </td>
+                    <td class="col-md-1" style="text-align: center">
+                        1<sup>a</sup>
+                    </td>
+                    <td class="col-md-1" style="text-align: center">
+                        2<sup>a</sup>
+                    </td>
+                    <td class="col-md-1" style="text-align: center">
+                        3<sup>a</sup>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
         </table>
     </form>
 </div>
@@ -185,3 +128,9 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        cargar_reproduccion();
+    });
+
+</script>

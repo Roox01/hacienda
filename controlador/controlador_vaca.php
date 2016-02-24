@@ -39,6 +39,10 @@ if ($opcion == "editar_vaca") {
     editarVaca();
 }
 
+if ($opcion == "cargar_reproduccion") {
+    cargarReproduccion();
+}
+
 function datos_generales() {
     if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
         die("Error al conectarse a la base de datos");
@@ -204,7 +208,7 @@ function registrar() {
     }
 
     if ($sentencia->execute()) {
-        $mensaje = crearFenotipo($conexion, $numero);
+        $mensaje.= crearFenotipo($conexion, $numero);
         $mensaje.= "Vaca registrada con éxito";
     } else {
         $mensaje = "Error al registrar una nueva vaca. <br> La vaca se encuentra creada en la base de datos";
@@ -370,6 +374,101 @@ function editarVaca() {
     }
     $sentencia->close();
     $mysqli->close();
+    echo $mensaje;
+}
+
+function cargarReproduccion(){
+    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+        die("Error al conectarse a la base de datos");
+    }
+    $mensaje = "";
+    $codigo_vaca = (int) $_POST['vaca'];
+    $hacienda = $_SESSION['hacienda'];
+
+    $sql = "SELECT r.`id`,`fecha`, `toro1`, `toro2`, `fecha_1ia`, `toro_1ia`, `fecha_2ia`, `toro_2ia`, `fecha_3iamn`, `toro_3iamn`, `fecha_mn`,"
+            . " `toro_mn`, `fecha_1pal`, `res_1pal`, `fecha_2pal`, `res_2pal`, `fecha_3pal`, `res_3pal` "
+            . "FROM reproduccion r, vaca v, hacienda h WHERE r.id_vaca=v.numero and v.numero=? and v.hacienda=h.id and h.nombre=?";
+
+    if (!$sentencia = $mysqli->prepare($sql)) {
+        $mensaje.= $mysqli->error;
+    }
+    if (!$sentencia->bind_param("is", $codigo_vaca, $hacienda)) {
+        $mensaje.= $mysqli->error;
+    }
+
+    if ($sentencia->execute()) {
+        $sentencia->bind_result($id, $fecha, $toro1,$toro2, $fecha_1ia, $toro_1ia,$fecha_2ia, $toro_2ia,$fecha_3iamn, $toro_3iamn, $fecha_mn, $toro_mn, 
+                $fecha_1pal,$res_1pal, $fecha_2pal, $res_2pal, $fecha_3pal, $res_3pal );
+        while ($sentencia->fetch()) {
+            $mensaje.='<tr>
+                    <td class="col-md-1 no-padding">
+                        F
+                    </td>
+                    <td class="col-md-1" colspan="2">
+                        <input type="date" id="fecha-'.$id.'" value="'.$fecha.'" disabled>
+                    </td>
+                    <td class="col-md-2">
+                        <input type="date" id="fecha_1ia-'.$id.'" name="fecha_1ia-'.$id.'" value="'.$fecha_1ia.'">
+                    </td>
+                    <td class="col-md-2">
+                        <input type="date" id="fecha_2ia-'.$id.'" name="fecha_2ia-'.$id.'" value="'.$fecha_2ia.'">
+                    </td>
+                    <td class="col-md-1">
+                        <input type="date" id="fecha_3iamn-'.$id.'" name="fecha_3iamn-'.$id.'" value="'.$fecha_3iamn.'">
+                    </td>
+                    <td class="col-md-1">
+                        <input type="date" id="fecha_mn-'.$id.'" name="fecha_mn-'.$id.'" value="'.$fecha_mn.'">
+                    </td>
+                    <td class="col-md-1 no-padding">
+                        F <input type="date" id="fecha_1pal-'.$id.'" name="fecha_1pal-'.$id.'" value="'.$fecha_1pal.'">
+                    </td>
+                    <td class="col-md-1 no-padding">
+                        F <input type="date" id="fecha_2pal-'.$id.'" name="fecha_2pal-'.$id.'" value="'.$fecha_2pal.'">
+                    </td>
+                    <td class="col-md-1 no-padding">
+                        F <input type="date" id="fecha_3pal-'.$id.'" name="fecha_3pal-'.$id.'" value="'.$fecha_3pal.'">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-1 no-padding">
+                        T
+                    </td>
+                    <td class="col-md-1">
+                        <input type="text" id="toro1-'.$id.'" value="'.$toro1.'">
+                    </td>
+                    <td class="col-md-1">
+                        <input type="text" id="toro2-'.$id.'" value="'.$toro2.'">
+                    </td>
+                    <td class="col-md-2">
+                        <input type="text" id="toro_1ia-'.$id.'" name="toro_1ia-'.$id.'" value="'.$toro_1ia.'">
+                    </td>
+                    <td class="col-md-2">
+                        <input type="text" id="toro_2ia-'.$id.'" name="toro_2ia-'.$id.'" value="'.$toro_2ia.'">
+                    </td>
+                    <td class="col-md-1">
+                        <input type="text" id="toro_2iamn-'.$id.'" name="toro_3iamn-'.$id.'" value="'.$toro_3iamn.'">
+                    </td>
+                    <td class="col-md-1">
+                        <input type="text" id="toro_mn-'.$id.'" name="toro_mn-'.$id.'" value="'.$toro_mn.'">
+                    </td>
+                    <td class="col-md-1 no-padding">
+                        R <input type="text" id="res_1pal'.$id.'" name="res_1pal'.$id.'" value="'.$res_1pal.'">
+                    </td>
+                    <td class="col-md-1 no-padding">
+                        R <input type="text" id="res_2pal-'.$id.'" name="res_2pal-'.$id.'" value="'.$res_2pal.'">
+                    </td>
+                    <td class="col-md-1 no-padding">
+                        R <input type="text" id="res_3pal-'.$id.'" name="res_3pal-'.$id.'" value="'.$res_3pal.'">
+                    </td>
+                </tr>';
+        }
+    } else {
+        $mensaje.='<tr>LA VACA NO TIENE CRÍAS</tr>';
+    }
+//    $mensaje='["juan","pedro","jacinto"]';
+    $sentencia->close();
+    $mysqli->close();
+    $mensaje = str_replace('&', "'", $mensaje);
     echo $mensaje;
 }
 ?>
