@@ -155,16 +155,50 @@ function editar(clave, valor, vaca, opcion) {
     }
 }
 
-function cargar_reproduccion(){
+function cargar_reproduccion() {
     var vaca = $('#vaca').val();
     if (vaca != "") {
         $.post("controlador/controlador_vaca.php", {vaca: vaca, opcion: "cargar_reproduccion"},
         function (mensaje) {
-           $('#datos_reproduccion tbody').append(mensaje);
+            $('#datos_reproduccion tbody').append(mensaje);
         });
     } else {
         alert("No existe vaca");
     }
+}
+
+function editar_reproduccion(clave, id) {
+    var x = '#' + clave + id;
+    var valor = $(x).val();
+    console.log(valor);
+    if (valor !== '') {
+        $.post("controlador/controlador_vaca.php", {valor: valor, clave: clave, id: id, opcion: "editar_reproduccion"},
+        function (mensaje) {
+            $('#res_reproduccion').html(mensaje);
+            alert(mensaje);
+        });
+    }
+    else {
+        $(x).focus();
+        $('#crias').html('Favor diligenciar el campo');
+        alert('Favor diligenciar el campo');
+    }
+}
+
+function registrar_programa() {
+    var fecha = $('#fecha_programar').val();
+    var vaca = $('#vaca').val();
+    console.log(fecha);
+    if (fecha!=='') {
+        $.post("controlador/controlador_vaca.php", {fecha:fecha,vaca:vaca, opcion: "registrar_reproduccion"},
+        function (mensaje) {
+            $('#res_reproduccion').html(mensaje);
+        });
+    }
+    else {
+        alert('Favor registrar todos los campos requeridos');
+    }
+
 }
 
 

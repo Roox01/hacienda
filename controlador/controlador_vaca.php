@@ -43,6 +43,14 @@ if ($opcion == "cargar_reproduccion") {
     cargarReproduccion();
 }
 
+if ($opcion == "editar_reproduccion") {
+    editarReproduccion();
+}
+
+if ($opcion == "registrar_reproduccion") {
+    registrarReproduccion();
+}
+
 function datos_generales() {
     if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
         die("Error al conectarse a la base de datos");
@@ -377,7 +385,7 @@ function editarVaca() {
     echo $mensaje;
 }
 
-function cargarReproduccion(){
+function cargarReproduccion() {
     if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
         die("Error al conectarse a la base de datos");
     }
@@ -397,36 +405,35 @@ function cargarReproduccion(){
     }
 
     if ($sentencia->execute()) {
-        $sentencia->bind_result($id, $fecha, $toro1,$toro2, $fecha_1ia, $toro_1ia,$fecha_2ia, $toro_2ia,$fecha_3iamn, $toro_3iamn, $fecha_mn, $toro_mn, 
-                $fecha_1pal,$res_1pal, $fecha_2pal, $res_2pal, $fecha_3pal, $res_3pal );
+        $sentencia->bind_result($id, $fecha, $toro1, $toro2, $fecha_1ia, $toro_1ia, $fecha_2ia, $toro_2ia, $fecha_3iamn, $toro_3iamn, $fecha_mn, $toro_mn, $fecha_1pal, $res_1pal, $fecha_2pal, $res_2pal, $fecha_3pal, $res_3pal);
         while ($sentencia->fetch()) {
             $mensaje.='<tr>
                     <td class="col-md-1 no-padding">
                         F
                     </td>
                     <td class="col-md-1" colspan="2">
-                        <input type="date" id="fecha-'.$id.'" value="'.$fecha.'" disabled>
+                        <input type="date" id="fecha' . $id . '" value="' . $fecha . '" disabled>
                     </td>
                     <td class="col-md-2">
-                        <input type="date" id="fecha_1ia-'.$id.'" name="fecha_1ia-'.$id.'" value="'.$fecha_1ia.'">
+                        <input type="date" id="fecha_1ia' . $id . '" name="fecha_1ia' . $id . '" value="' . $fecha_1ia . '" onblur="editar_reproduccion(&fecha_1ia&,&' . $id . '&)">
                     </td>
                     <td class="col-md-2">
-                        <input type="date" id="fecha_2ia-'.$id.'" name="fecha_2ia-'.$id.'" value="'.$fecha_2ia.'">
+                        <input type="date" id="fecha_2ia' . $id . '" name="fecha_2ia' . $id . '" value="' . $fecha_2ia . '"onblur="editar_reproduccion(&fecha_2ia&,&' . $id . '&)">
                     </td>
                     <td class="col-md-1">
-                        <input type="date" id="fecha_3iamn-'.$id.'" name="fecha_3iamn-'.$id.'" value="'.$fecha_3iamn.'">
+                        <input type="date" id="fecha_3iamn' . $id . '" name="fecha_3iamn' . $id . '" value="' . $fecha_3iamn . '"onblur="editar_reproduccion(&fecha_3iamn&,&' . $id . '&)">
                     </td>
                     <td class="col-md-1">
-                        <input type="date" id="fecha_mn-'.$id.'" name="fecha_mn-'.$id.'" value="'.$fecha_mn.'">
+                        <input type="date" id="fecha_mn' . $id . '" name="fecha_mn' . $id . '" value="' . $fecha_mn . '"onblur="editar_reproduccion(&fecha_mn&,&' . $id . '&)">
                     </td>
                     <td class="col-md-1 no-padding">
-                        F <input type="date" id="fecha_1pal-'.$id.'" name="fecha_1pal-'.$id.'" value="'.$fecha_1pal.'">
+                        F <input type="date" id="fecha_1pal' . $id . '" name="fecha_1pal' . $id . '" value="' . $fecha_1pal . '"onblur="editar_reproduccion(&fecha_1pal&,&' . $id . '&)">
                     </td>
                     <td class="col-md-1 no-padding">
-                        F <input type="date" id="fecha_2pal-'.$id.'" name="fecha_2pal-'.$id.'" value="'.$fecha_2pal.'">
+                        F <input type="date" id="fecha_2pal' . $id . '" name="fecha_2pal' . $id . '" value="' . $fecha_2pal . '"onblur="editar_reproduccion(&fecha_1pal&,&' . $id . '&)">
                     </td>
                     <td class="col-md-1 no-padding">
-                        F <input type="date" id="fecha_3pal-'.$id.'" name="fecha_3pal-'.$id.'" value="'.$fecha_3pal.'">
+                        F <input type="date" id="fecha_3pal' . $id . '" name="fecha_3pal' . $id . '" value="' . $fecha_3pal . '"onblur="editar_reproduccion(&fecha_1pal&,&' . $id . '&)">
                     </td>
                 </tr>
                 <tr>
@@ -434,31 +441,31 @@ function cargarReproduccion(){
                         T
                     </td>
                     <td class="col-md-1">
-                        <input type="text" id="toro1-'.$id.'" value="'.$toro1.'">
+                        <input type="text" id="toro1' . $id . '" value="' . $toro1 . '" onblur="editar_reproduccion(&toro1&,&' . $id . '&)">
                     </td>
                     <td class="col-md-1">
-                        <input type="text" id="toro2-'.$id.'" value="'.$toro2.'">
+                        <input type="text" id="toro2' . $id . '" value="' . $toro2 . '" onblur="editar_reproduccion(&toro2&,&' . $id . '&)">
                     </td>
                     <td class="col-md-2">
-                        <input type="text" id="toro_1ia-'.$id.'" name="toro_1ia-'.$id.'" value="'.$toro_1ia.'">
+                        <input type="text" id="toro_1ia' . $id . '" name="toro_1ia' . $id . '" value="' . $toro_1ia . '" onblur="editar_reproduccion(&toro_1ia&,&' . $id . '&)">
                     </td>
                     <td class="col-md-2">
-                        <input type="text" id="toro_2ia-'.$id.'" name="toro_2ia-'.$id.'" value="'.$toro_2ia.'">
+                        <input type="text" id="toro_2ia' . $id . '" name="toro_2ia' . $id . '" value="' . $toro_2ia . '" onblur="editar_reproduccion(&toro_2ia&,&' . $id . '&)">
                     </td>
                     <td class="col-md-1">
-                        <input type="text" id="toro_2iamn-'.$id.'" name="toro_3iamn-'.$id.'" value="'.$toro_3iamn.'">
+                        <input type="text" id="toro_3iamn' . $id . '" name="toro_3iamn' . $id . '" value="' . $toro_3iamn . '" onblur="editar_reproduccion(&toro_3iamn&,&' . $id . '&)">
                     </td>
                     <td class="col-md-1">
-                        <input type="text" id="toro_mn-'.$id.'" name="toro_mn-'.$id.'" value="'.$toro_mn.'">
+                        <input type="text" id="toro_mn' . $id . '" name="toro_mn' . $id . '" value="' . $toro_mn . '" onblur="editar_reproduccion(&toro_mn&,&' . $id . '&)">
                     </td>
                     <td class="col-md-1 no-padding">
-                        R <input type="text" id="res_1pal'.$id.'" name="res_1pal'.$id.'" value="'.$res_1pal.'">
+                        R <input type="text" id="res_1pal' . $id . '" name="res_1pal' . $id . '" value="' . $res_1pal . '" onblur="editar_reproduccion(&res_1pal&,&' . $id . '&)">
                     </td>
                     <td class="col-md-1 no-padding">
-                        R <input type="text" id="res_2pal-'.$id.'" name="res_2pal-'.$id.'" value="'.$res_2pal.'">
+                        R <input type="text" id="res_2pal' . $id . '" name="res_2pal' . $id . '" value="' . $res_2pal . '" onblur="editar_reproduccion(&res_2pal&,&' . $id . '&)">
                     </td>
                     <td class="col-md-1 no-padding">
-                        R <input type="text" id="res_3pal-'.$id.'" name="res_3pal-'.$id.'" value="'.$res_3pal.'">
+                        R <input type="text" id="res_3pal' . $id . '" name="res_3pal' . $id . '" value="' . $res_3pal . '" onblur="editar_reproduccion(&res_3pal&,&' . $id . '&)">
                     </td>
                 </tr>';
         }
@@ -469,6 +476,67 @@ function cargarReproduccion(){
     $sentencia->close();
     $mysqli->close();
     $mensaje = str_replace('&', "'", $mensaje);
+    echo $mensaje;
+}
+
+function editarReproduccion() {
+    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+        die("Error al conectarse a la base de datos");
+    }
+    $mensaje = "";
+    $clave = $_POST['clave'];
+    $id = $_POST['id'];
+    $hacienda = $_SESSION['hacienda'];
+    $valor = $_POST['valor'];
+
+
+    $sql = "UPDATE reproduccion r, hacienda h, vaca v SET r." . $clave . "=? WHERE r.id=? and r.id_vaca=v.numero and  v.hacienda=h.id and h.nombre=?";
+
+    if (!$sentencia = $mysqli->prepare($sql)) {
+        $mensaje.= $mysqli->error;
+    }
+    if (!$sentencia->bind_param('sss', $valor, $id, $hacienda)) {
+        $mensaje.= $mysqli->error;
+    }
+    if (!$sentencia->execute()) {
+        $mensaje .= "No se ha podido actualizar";
+    } else {
+        $mensaje = "Campo actualizado";
+    }
+    $sentencia->close();
+    $mysqli->close();
+    echo $mensaje;
+}
+
+function registrarReproduccion() {
+    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+        die("Error al conectarse a la base de datos");
+    }
+
+    $mensaje = "";
+    $fecha = $_POST['fecha'];
+    $vaca = $_POST['vaca'];
+    $hacienda = $_SESSION['hacienda'];
+
+    $sql = "INSERT INTO `reproduccion` (`id`, `id_vaca`, `fecha`, `toro1`, `toro2`, `fecha_1ia`, `toro_1ia`, `fecha_2ia`, `toro_2ia`, 
+        `fecha_3iamn`, `toro_3iamn`, `fecha_mn`, `toro_mn`, `fecha_1pal`, `res_1pal`, `fecha_2pal`, `res_2pal`, `fecha_3pal`, `res_3pal`)
+        SELECT '',v.numero,r.fecha,'','','','','','','','','','','','','','','','' FROM reproduccion r, vaca v, hacienda h 
+        WHERE r.fecha=? AND v.numero=? AND v.hacienda=h.id AND h.nombre=?";
+
+    if (!$sentencia = $mysqli->prepare($sql)) {
+        $mensaje.= $mysqli->error;
+    }
+    if (!$sentencia->bind_param('sss', $fecha, $vaca, $hacienda)) {
+        $mensaje.= $mysqli->error;
+    }
+    if ($sentencia->execute()) {
+        $mensaje = "programa registrado con éxito";
+    } else {
+        $mensaje = "Error al registrar un nuevo programa" . $sentencia->error;
+    }
+
+    $sentencia->close();
+    $mysqli->close();
     echo $mensaje;
 }
 ?>

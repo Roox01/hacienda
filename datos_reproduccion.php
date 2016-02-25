@@ -74,6 +74,68 @@
                 </tr>
             </thead>
             <tbody>
+<!--                <tr>
+                    <td class="col-md-1 no-padding">
+                        F
+                    </td>
+                    <td class="col-md-1" colspan="2">
+                        <input type="date" id="fecha-'.$id.'" value="'.$fecha.'" disabled>
+                    </td>
+                    <td class="col-md-2">
+                        <input type="date" id="fecha_1ia-'.$id.'" name="fecha_1ia-'.$id.'" value="'.$fecha_1ia.'">
+                    </td>
+                    <td class="col-md-2">
+                        <input type="date" id="fecha_2ia-'.$id.'" name="fecha_2ia-'.$id.'" value="'.$fecha_2ia.'">
+                    </td>
+                    <td class="col-md-1">
+                        <input type="date" id="fecha_3iamn-'.$id.'" name="fecha_3iamn-'.$id.'" value="'.$fecha_3iamn.'">
+                    </td>
+                    <td class="col-md-1">
+                        <input type="date" id="fecha_mn-'.$id.'" name="fecha_mn-'.$id.'" value="'.$fecha_mn.'">
+                    </td>
+                    <td class="col-md-1 no-padding">
+                        F <input type="date" id="fecha_1pal-'.$id.'" name="fecha_1pal-'.$id.'" value="'.$fecha_1pal.'">
+                    </td>
+                    <td class="col-md-1 no-padding">
+                        F <input type="date" id="fecha_2pal-'.$id.'" name="fecha_2pal-'.$id.'" value="'.$fecha_2pal.'">
+                    </td>
+                    <td class="col-md-1 no-padding">
+                        F <input type="date" id="fecha_3pal-'.$id.'" name="fecha_3pal-'.$id.'" value="'.$fecha_3pal.'">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-1 no-padding">
+                        T
+                    </td>
+                    <td class="col-md-1">
+                        <input type="text" id="toro1-'.$id.'" value="'.$toro1.'">
+                    </td>
+                    <td class="col-md-1">
+                        <input type="text" id="toro2-'.$id.'" value="'.$toro2.'">
+                    </td>
+                    <td class="col-md-2">
+                        <input type="text" id="toro_1ia-'.$id.'" name="toro_1ia-'.$id.'" value="'.$toro_1ia.'">
+                    </td>
+                    <td class="col-md-2">
+                        <input type="text" id="toro_2ia-'.$id.'" name="toro_2ia-'.$id.'" value="'.$toro_2ia.'">
+                    </td>
+                    <td class="col-md-1">
+                        <input type="text" id="toro_2iamn-'.$id.'" name="toro_3iamn-'.$id.'" value="'.$toro_3iamn.'">
+                    </td>
+                    <td class="col-md-1">
+                        <input type="text" id="toro_mn-'.$id.'" name="toro_mn-'.$id.'" value="'.$toro_mn.'">
+                    </td>
+                    <td class="col-md-1 no-padding">
+                        R <input type="text" id="res_1pal'.$id.'" name="res_1pal'.$id.'" value="'.$res_1pal.'">
+                    </td>
+                    <td class="col-md-1 no-padding">
+                        R <input type="text" id="res_2pal-'.$id.'" name="res_2pal-'.$id.'" value="'.$res_2pal.'">
+                    </td>
+                    <td class="col-md-1 no-padding">
+                        R <input type="text" id="res_3pal-'.$id.'" name="res_3pal-'.$id.'" value="'.$res_3pal.'">
+                    </td>
+                </tr>-->
+
             </tbody>
         </table>
     </form>
@@ -98,39 +160,25 @@
             <form>
                 <div class="modal-body">
 
-
-                    <div class="form-group">
-                        <label for="tipo">Tipo</label>
-                        <label class="radio-inline">
-                            <input type="radio" name="tipo" id="tipo1" value="1"> M.N.
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="tipo" id="tipo2" value="2"> I.A.
-                        </label>
-                    </div>
                     <div class="form-group">
                         <label for="fecha">Fecha</label>
-                        <input type="date" class="form-control" id="fecha" placeholder="Fecha en que se realiza el procedimiento">
+                        <input type="date" class="form-control" id="fecha_programar" placeholder="Fecha en que se realiza el procedimiento">
                     </div>
-                    <div class="form-group">
-                        <label for="toro">Toro</label>
-                        <input type="number" class="form-control" id="toro" placeholder="Código del toro escogido para el procedimiento">
-                    </div>
-
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="b" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-ok">Registrar</button>
+                    <button id="registrar_reproduccion" class="btn btn-ok" onclick="registrar_programa();">Registrar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<div id="res_reproduccion"></div>
 <script>
     $(document).ready(function () {
         cargar_reproduccion();
     });
+
+    
 
 </script>
