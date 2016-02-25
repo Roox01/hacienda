@@ -73,7 +73,7 @@
                 <div class="form-group">
                     <span style=" padding-right: 0;padding-left: 0" class="col-sm-3"><strong>Estado</strong></span>
                     <span class="col-sm-9" style=" padding-right: 0;padding-left: 0">
-                        <select style="width: 100%" class="form-control">
+                        <select id="estado" style="width: 100%" class="form-control">
                             <option>Viva</option>
                             <option>Perdida</option>
                             <option>Muerta</option>
@@ -85,6 +85,8 @@
                     <label for="observaciones">Observaciones</label>
                     <textarea type="text" class="form-control" id="observaciones" rows="5" placeholder=""></textarea>
                 </div>
+                <a id="actualizar" class="btn btn-ok" onclick="actualizar_inventario();">Actualizar en inventario</a>
+                <div id="inv"></div>
             </form>
         </div>
     </div>

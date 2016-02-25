@@ -6,7 +6,6 @@ require_once '../modelo/vaca.php';
 
 $opcion = $_POST['opcion'];
 
-
 if ($opcion == "datos_generales") {
     datos_generales();
 }
@@ -49,6 +48,10 @@ if ($opcion == "editar_reproduccion") {
 
 if ($opcion == "registrar_reproduccion") {
     registrarReproduccion();
+}
+
+if ($opcion == "actualizar_inventario") {
+    actualizarInventario();
 }
 
 function datos_generales() {
@@ -206,17 +209,17 @@ function registrar() {
 
     $sql = "INSERT INTO `vaca`(`hacienda`, `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`, `padre_registro`, `madre_numero`, "
             . "`madre_registro`, `clasificacion`, `peso_205dias`, `altura_sacro_destete`, `peso_18meses`, `fecha_entrada_toro`, "
-            . "`peso_entrada_toro`, `foto`, `observaciones`) "
-            . "SELECT h.`id`,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? FROM `hacienda` h WHERE h.`nombre`=?;";
+            . "`peso_entrada_toro`, `foto`) "
+            . "SELECT h.`id`,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? FROM `hacienda` h WHERE h.`nombre`=?;";
     if (!$sentencia = $conexion->prepare($sql)) {
         $mensaje.= $conexion->error;
     }
-    if (!$sentencia->bind_param("isisiiiisiiisisss", $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $observaciones, $hacienda)) {
+    if (!$sentencia->bind_param("isisiiiisiiisiss", $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $hacienda)) {
         $mensaje.= $conexion->error;
     }
 
     if ($sentencia->execute()) {
-        $mensaje.= crearFenotipo($conexion, $numero);
+        $mensaje.= crearInventario($conexion, $numero);
         $mensaje.= "Vaca registrada con éxito";
     } else {
         $mensaje = "Error al registrar una nueva vaca. <br> La vaca se encuentra creada en la base de datos";
@@ -227,13 +230,13 @@ function registrar() {
     echo $mensaje;
 }
 
-function crearFenotipo($conexion, $numero) {
+function crearInventario($conexion, $numero) {
     $mensaje = '';
-    $sql = "INSERT INTO `fenotipo`(`id_vaca`) VALUES ($numero)";
+    $sql = "INSERT INTO `inventario`(`id_vaca`,`estado`,`observaciones`,`fecha_consulta`) VALUES ($numero,'viva','','')";
     if (mysqli_query($conexion, $sql)) {
-        $mensaje.='Fenotipo creado automáticamente';
+        $mensaje.='Registrada en inventario automáticamente';
     } else {
-        $mensaje.='Actualmente el fenotipo se encuentra creado en la base de datos';
+        $mensaje.='Actualmente se encuentra creado en inventario';
     }
     echo $mensaje;
 }
@@ -533,6 +536,36 @@ function registrarReproduccion() {
         $mensaje = "programa registrado con éxito";
     } else {
         $mensaje = "Error al registrar un nuevo programa" . $sentencia->error;
+    }
+
+    $sentencia->close();
+    $mysqli->close();
+    echo $mensaje;
+}
+
+function actualizarInventario(){
+    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+        die("Error al conectarse a la base de datos");
+    }
+
+    $mensaje = "";
+    $estado = $_POST['estado'];
+    $observaciones = $_POST['observaciones'];
+    $vaca = (int)$_POST['vaca'];
+    $hacienda = $_SESSION['hacienda'];
+
+    $sql = "UPDATE `inventario` i, vaca v, hacienda h SET `id_vaca`=?,`estado`=?,`observaciones`=? WHERE id_vaca=v.numero and v.hacienda=h.id and h.nombre=?;";
+
+    if (!$sentencia = $mysqli->prepare($sql)) {
+        $mensaje.= $mysqli->error;
+    }
+    if (!$sentencia->bind_param('isss', $vaca,$estado,$observaciones,$hacienda)) {
+        $mensaje.= $mysqli->error;
+    }
+    if ($sentencia->execute()) {
+        $mensaje = "vaca actualizada con éxito";
+    } else {
+        $mensaje = "Error al en el inventario" . $sentencia->error;
     }
 
     $sentencia->close();

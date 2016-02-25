@@ -45,7 +45,7 @@ and open the template in the editor.
                     </a>
                 </div>
                 <div class="col-lg-4" style="border: 10px">
-                    <a>
+                    <a href="vista_inventario.php" id="inventario">
                         <div id="top_rigth cuadro_info">
                             <h4>INVENTARIO</h4>
                             <p>Control hacienda</p>

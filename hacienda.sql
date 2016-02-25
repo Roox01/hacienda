@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-02-2016 a las 23:29:05
+-- Tiempo de generación: 25-02-2016 a las 23:47:47
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -19,6 +19,29 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `hacienda`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cambios`
+--
+
+CREATE TABLE `cambios` (
+  `cambio` int(11) NOT NULL,
+  `id_vaca` int(11) NOT NULL,
+  `estado` varchar(30) NOT NULL,
+  `observaciones` text,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `cambios`
+--
+
+INSERT INTO `cambios` (`cambio`, `id_vaca`, `estado`, `observaciones`, `fecha`) VALUES
+(74, 44, 'Perdida', 'prueba 2', '2016-02-25 22:39:33'),
+(75, 44, 'Muerta', 'hola mundo\n', '2016-02-25 22:39:55'),
+(76, 44, 'Traslado', 'hola mundoprueba 3', '2016-02-25 22:46:54');
 
 -- --------------------------------------------------------
 
@@ -48,8 +71,11 @@ CREATE TABLE `cria` (
 --
 
 INSERT INTO `cria` (`id_vaca`, `padre`, `fecha_parto`, `sexo`, `numero_cria`, `inter_parto`, `peso_nacimiento`, `fecha_destete`, `peso_destete`, `peso_205dias`, `indice1`, `peso_18meses`, `indice2`, `observaciones`) VALUES
-(44, '8987', '2016-01-01', 'femenino', '1234', '', 30, '2016-02-05', 80, 165, '', 300, '', 'bco cial'),
-(44, '456', '2016-01-11', 'masculino', '419-2', 'no', 30, '2016-01-05', 50, 150, NULL, 250, '', 'Bco Cial');
+(33, '852', '2015-01-31', 'femenino', '0254', 'No', 30, '2016-02-01', 0, 0, '', 0, 'sano', 'colorado'),
+(44, '8987', '2016-01-01', 'femenino', '1234', '', 30, '2016-02-05', 80, 165, 'sano', 300, 'sano', 'bco cial'),
+(44, '456', '2016-01-11', 'masculino', '419-2', 'no', 30, '2016-01-05', 50, 150, 'sano', 250, 'sano', 'Bco Cial'),
+(12, '369', '2016-02-21', 'masculino', '852', 'no', 30, '0000-00-00', 0, 0, '', 0, '', ''),
+(33, '852', '2015-01-31', 'femenino', '898', 'No', 30, '2016-02-12', 0, 0, 'sano', 300, 'sano', 'colorado');
 
 -- --------------------------------------------------------
 
@@ -85,8 +111,14 @@ CREATE TABLE `fenotipo` (
 
 INSERT INTO `fenotipo` (`id_vaca`, `car_racial_ap_general`, `esqueleto`, `aplomos`, `largo`, `amplitud_pecho`, `amplitud_lomo`, `amplitud_anca`, `profundidad_torax`, `profundidad_calzon`, `desarrollo`, `temperamento`, `musculo_grasa`, `ap_general`, `u_post`, `u_ant`, `pezon`, `irrig`, `total`) VALUES
 (12, 'qwerty', 'asdfs', 'fdf', 'fasd', 'dsf', 'sdf', '1234', 'wertgf', 'gfgfg', '1341324', 'fgh', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(33, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(44, 'a', 'esqueleto', 'aplomo', 'largo', 'a_pecho', 'a_lomo', 'a_anca', 'p_torax', 'p_calzon', 'desarrollo', 'temperamento', 'musculo', 'ap_general', 'u_pos', 'u_ant', '_pezon', 'irri', 'total');
+(22, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(33, '78', '5', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(44, 'ap general', 'esqueleto', 'aplomo', 'largo', 'a_pecho', 'a_lomo', 'a_anca', 'p_torax', 'p_calzon', 'desarrollo', 'temperamento', 'musculo', 'ap_general', 'u_pos', 'u_ant', '_pezon', 'irri', 'total'),
+(55, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(99, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(223, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(500, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -106,7 +138,74 @@ CREATE TABLE `hacienda` (
 --
 
 INSERT INTO `hacienda` (`id`, `nombre`, `direccion`, `telefono`) VALUES
-(1, 'la sonora', NULL, NULL);
+(1, 'la sonora', NULL, NULL),
+(2, 'napoles', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inventario`
+--
+
+CREATE TABLE `inventario` (
+  `id_vaca` int(11) NOT NULL,
+  `estado` varchar(30) NOT NULL,
+  `observaciones` text,
+  `fecha_consulta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `inventario`
+--
+
+INSERT INTO `inventario` (`id_vaca`, `estado`, `observaciones`, `fecha_consulta`) VALUES
+(44, 'Traslado', 'hola mundoprueba 3', '2016-02-25 22:46:54');
+
+--
+-- Disparadores `inventario`
+--
+DELIMITER $$
+CREATE TRIGGER `cambios_inventario` AFTER UPDATE ON `inventario` FOR EACH ROW INSERT INTO `cambios` (`cambio`,`id_vaca`,`estado`,`observaciones`,`fecha`)
+VALUES ('',NEW.id_vaca,NEW.estado,NEW.observaciones,NEW.fecha_consulta)
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reproduccion`
+--
+
+CREATE TABLE `reproduccion` (
+  `id` int(11) NOT NULL,
+  `id_vaca` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `toro1` varchar(15) DEFAULT NULL,
+  `toro2` varchar(15) DEFAULT NULL,
+  `fecha_1ia` date DEFAULT NULL,
+  `toro_1ia` varchar(15) DEFAULT NULL,
+  `fecha_2ia` date DEFAULT NULL,
+  `toro_2ia` varchar(15) DEFAULT NULL,
+  `fecha_3iamn` date DEFAULT NULL,
+  `toro_3iamn` varchar(15) DEFAULT NULL,
+  `fecha_mn` date DEFAULT NULL,
+  `toro_mn` varchar(15) DEFAULT NULL,
+  `fecha_1pal` date DEFAULT NULL,
+  `res_1pal` varchar(15) DEFAULT NULL,
+  `fecha_2pal` date DEFAULT NULL,
+  `res_2pal` varchar(15) DEFAULT NULL,
+  `fecha_3pal` date DEFAULT NULL,
+  `res_3pal` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `reproduccion`
+--
+
+INSERT INTO `reproduccion` (`id`, `id_vaca`, `fecha`, `toro1`, `toro2`, `fecha_1ia`, `toro_1ia`, `fecha_2ia`, `toro_2ia`, `fecha_3iamn`, `toro_3iamn`, `fecha_mn`, `toro_mn`, `fecha_1pal`, `res_1pal`, `fecha_2pal`, `res_2pal`, `fecha_3pal`, `res_3pal`) VALUES
+(1, 44, '2016-02-01', '1234', '', '2016-02-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 44, '2016-02-23', '987', '987', '2016-02-23', '987', '2016-02-24', '987', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 44, '2016-02-01', '', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -117,15 +216,16 @@ INSERT INTO `hacienda` (`id`, `nombre`, `direccion`, `telefono`) VALUES
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nombre_usuario` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `password` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+  `password` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `hacienda` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `nombre_usuario`, `password`) VALUES
-(1, 'admin', 'admin');
+INSERT INTO `usuario` (`id`, `nombre_usuario`, `password`, `hacienda`) VALUES
+(1, 'admin', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -149,22 +249,42 @@ CREATE TABLE `vaca` (
   `peso_18meses` int(5) DEFAULT NULL,
   `fecha_entrada_toro` date DEFAULT NULL,
   `peso_entrada_toro` int(5) DEFAULT NULL,
-  `foto` text COLLATE utf8_spanish_ci,
-  `observaciones` text COLLATE utf8_spanish_ci
+  `foto` text COLLATE utf8_spanish_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `vaca`
 --
 
-INSERT INTO `vaca` (`hacienda`, `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`, `padre_registro`, `madre_numero`, `madre_registro`, `clasificacion`, `peso_205dias`, `altura_sacro_destete`, `peso_18meses`, `fecha_entrada_toro`, `peso_entrada_toro`, `foto`, `observaciones`) VALUES
-(1, 12, 'asdf', 12, '2014-01-01', '34', '34', '43', '43', 'fadfa adf', 0, 0, 0, '0000-00-00', 0, '', ''),
-(1, 33, 'pulgoso', 33, '2016-01-01', '987', '987', '789', '789', 'poer', 0, 0, 0, '0000-00-00', 0, '', ''),
-(1, 44, 'josefa', 1234, '2015-09-06', '568', '568', '789', '789', 'Br Cial', 185, 50, 258, '2016-01-10', 250, '', NULL);
+INSERT INTO `vaca` (`hacienda`, `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`, `padre_registro`, `madre_numero`, `madre_registro`, `clasificacion`, `peso_205dias`, `altura_sacro_destete`, `peso_18meses`, `fecha_entrada_toro`, `peso_entrada_toro`, `foto`) VALUES
+(1, 12, 'asdf', 12, '2014-01-01', '34', '34', '43', '43', 'fadfa adf', 0, 0, 0, '0000-00-00', 400, ''),
+(1, 22, 'cvbn', 22, '2014-01-01', '65', '65', '45', '45', 'asd56', 0, 0, 0, '0000-00-00', 0, ''),
+(1, 33, 'pulgoso', 33, '2016-01-01', '987', '987', '789', '789', 'rical', 200, 30, 310, '2016-01-13', 330, ''),
+(1, 44, 'josefa', 1234, '2015-09-06', '568', '568', '789', '789', 'colorado', 185, 50, 258, '2016-01-10', 250, ''),
+(1, 55, 'hola', 55, '2013-01-02', '741', '741', '147', '147', 'qwer', 0, 0, 0, '0000-00-00', 0, ''),
+(1, 99, 'android', 99, '2016-02-01', '88', '88', '77', '77', 'poer', NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 100, 'dead', 100, '2013-01-01', '98', '98', '9', '9', 'res', 0, 0, 0, '0000-00-00', 0, ''),
+(1, 223, 'cvbn', 223, '2014-01-01', '65', '65', '45', '45', 'asd56', 0, 0, 0, '0000-00-00', 0, ''),
+(1, 500, 'qwer', 500, '2016-02-14', '878', '878', '78', '78', 'poer', NULL, NULL, NULL, NULL, NULL, NULL);
+
+--
+-- Disparadores `vaca`
+--
+DELIMITER $$
+CREATE TRIGGER `vaca_fenotipo` AFTER INSERT ON `vaca` FOR EACH ROW INSERT INTO `fenotipo`(`id_vaca`) VALUES (NEW.numero)
+$$
+DELIMITER ;
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `cambios`
+--
+ALTER TABLE `cambios`
+  ADD PRIMARY KEY (`cambio`),
+  ADD KEY `id_vaca` (`id_vaca`);
 
 --
 -- Indices de la tabla `cria`
@@ -186,10 +306,25 @@ ALTER TABLE `hacienda`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  ADD PRIMARY KEY (`id_vaca`);
+
+--
+-- Indices de la tabla `reproduccion`
+--
+ALTER TABLE `reproduccion`
+  ADD PRIMARY KEY (`id`,`id_vaca`,`fecha`),
+  ADD KEY `id_vaca` (`id_vaca`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hacienda` (`hacienda`),
+  ADD KEY `hacienda_2` (`hacienda`);
 
 --
 -- Indices de la tabla `vaca`
@@ -204,6 +339,16 @@ ALTER TABLE `vaca`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `cambios`
+--
+ALTER TABLE `cambios`
+  MODIFY `cambio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+--
+-- AUTO_INCREMENT de la tabla `reproduccion`
+--
+ALTER TABLE `reproduccion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -211,6 +356,12 @@ ALTER TABLE `usuario`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `cambios`
+--
+ALTER TABLE `cambios`
+  ADD CONSTRAINT `cambios_ibfk_1` FOREIGN KEY (`id_vaca`) REFERENCES `vaca` (`numero`);
 
 --
 -- Filtros para la tabla `cria`
@@ -223,6 +374,18 @@ ALTER TABLE `cria`
 --
 ALTER TABLE `fenotipo`
   ADD CONSTRAINT `fenotipo_ibfk_1` FOREIGN KEY (`id_vaca`) REFERENCES `vaca` (`numero`);
+
+--
+-- Filtros para la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  ADD CONSTRAINT `inventario_ibfk_1` FOREIGN KEY (`id_vaca`) REFERENCES `vaca` (`numero`);
+
+--
+-- Filtros para la tabla `reproduccion`
+--
+ALTER TABLE `reproduccion`
+  ADD CONSTRAINT `reproduccion_ibfk_1` FOREIGN KEY (`id_vaca`) REFERENCES `vaca` (`numero`);
 
 --
 -- Filtros para la tabla `vaca`

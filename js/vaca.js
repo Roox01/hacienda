@@ -189,8 +189,8 @@ function registrar_programa() {
     var fecha = $('#fecha_programar').val();
     var vaca = $('#vaca').val();
     console.log(fecha);
-    if (fecha!=='') {
-        $.post("controlador/controlador_vaca.php", {fecha:fecha,vaca:vaca, opcion: "registrar_reproduccion"},
+    if (fecha !== '') {
+        $.post("controlador/controlador_vaca.php", {fecha: fecha, vaca: vaca, opcion: "registrar_reproduccion"},
         function (mensaje) {
             $('#res_reproduccion').html(mensaje);
         });
@@ -201,4 +201,12 @@ function registrar_programa() {
 
 }
 
-
+function actualizar_inventario() {
+    var observaciones = $('#observaciones').val();
+    var estado = $('#estado').val();
+    var vaca = $('#vaca').val();
+    $.post("controlador/controlador_vaca.php", {estado: estado, observaciones: observaciones, vaca: vaca, opcion: "actualizar_inventario"},
+    function (mensaje) {
+        $('#inv').html(mensaje);
+    });
+}
