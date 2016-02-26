@@ -1,69 +1,38 @@
-<table id="tabla_titulo" class="table col-sm-8">
-    <tr>
-        <td class="col-sm-2"><strong>Número</strong></td>
-        <td class="col-sm-5"><strong>Nombre</strong></td>
-        <td class="col-sm-3"><strong>Fecha de consulta</strong></td>
-        <td class="col-sm-2"><strong>Estado</strong></td>
-    </tr>   
-</table>
-<table id="tabla_datos" class="table col-sm-8">
-    <tr>
-        <td class="col-sm-2"><strong>456</strong></td>
-        <td class="col-sm-5">Josefa</strong></td>
-        <td class="col-sm-3">17/01/2016</td>
-        <td class="col-sm-2">Viva</td>
-    </tr>
-    <tr>
-        <td class="col-sm-2"><strong>456</strong></td>
-        <td class="col-sm-5">Josefa</strong></td>
-        <td class="col-sm-3">17/01/2016</td>
-        <td class="col-sm-2">Viva</td>
-    </tr>
-    <tr>
-        <td class="col-sm-2"><strong>456</strong></td>
-        <td class="col-sm-5">Josefa</strong></td>
-        <td class="col-sm-3">17/01/2016</td>
-        <td class="col-sm-2">Viva</td>
-    </tr>
-    <tr>
-        <td class="col-sm-2"><strong>456</strong></td>
-        <td class="col-sm-5">Josefa</strong></td>
-        <td class="col-sm-3">17/01/2016</td>
-        <td class="col-sm-2">Perdida</td>
-    </tr>
-    <tr>
-        <td class="col-sm-2"><strong>456</strong></td>
-        <td class="col-sm-5">Josefa</strong></td>
-        <td class="col-sm-3">17/01/2016</td>
-        <td class="col-sm-2">Muerta</td>
-    </tr>
-    <tr>
-        <td class="col-sm-2"><strong>456</strong></td>
-        <td class="col-sm-5">Josefa</strong></td>
-        <td class="col-sm-3">17/01/2016</td>
-        <td class="col-sm-2">Perdida</td>
-    </tr>
-    <tr>
-        <td class="col-sm-2"><strong>456</strong></td>
-        <td class="col-sm-5">Josefa</strong></td>
-        <td class="col-sm-3">17/01/2016</td>
-        <td class="col-sm-2">Perdida</td>
-    </tr>
-    <tr>
-        <td class="col-sm-2"><strong>456</strong></td>
-        <td class="col-sm-5">Josefa</strong></td>
-        <td class="col-sm-3">17/01/2016</td>
-        <td class="col-sm-2">Viva</td>
-    </tr>
-    <tr>
-        <td class="col-sm-2"><strong>456</strong></td>
-        <td class="col-sm-5">Josefa</strong></td>
-        <td class="col-sm-3">17/01/2016</td>
-        <td class="col-sm-2">Viva</td>
-    </tr>
+<div class="form-group col-sm-3">
+    <label for="vacas">Historial de actualizaciones por animal</label>
+    <input type="text" class="form-control" id="codigoVaca" name="codigoVaca" placeholder="Ver otro animal" onkeypress="cargar_historial();">
+</div> 
+
+<table id="inventario_hacienda" class="table col-sm-8">
+    <thead>
+        <tr>
+            <th class="col-sm-1">Número</th>
+            <th class="col-sm-2">Nombre</th>            
+            <th class="col-sm-3">Estado</th>
+            <th class="col-sm-3">Observaciones</th>
+            <th class="col-sm-3">Fecha de consulta</th>
+        </tr>  
+    </thead>
+    <tbody></tbody>
 </table>
 
-<div class="col-sm-12" style="text-align: center">
+<table id="historial" class="table col-sm-8" style="display:none">
+    <thead>
+        <tr>
+            <th class="col-sm-1">Número</th>
+            <th class="col-sm-2">Nombre</th>            
+            <th class="col-sm-3">Estado</th>
+            <th class="col-sm-3">Observaciones</th>
+            <th class="col-sm-3">Fecha de consulta</th>
+        </tr>  
+    </thead>
+    <tbody></tbody>
+</table>
+
+
+
+
+<!--<div class="col-sm-12" style="text-align: center">
     <nav>
         <ul class="pagination">
             <li>
@@ -83,4 +52,11 @@
             </li>
         </ul>
     </nav>
-</div>
+</div>-->
+<script>
+    $(document).ready(function () {
+//        $('#inventario_hacienda').dataTable();
+        cargar_inventario();
+    });
+    
+</script>

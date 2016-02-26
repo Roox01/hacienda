@@ -20,7 +20,6 @@ function cargarDatosGenerales() {
     } else {
         alert("No existe vaca");
     }
-
 }
 ;
 
