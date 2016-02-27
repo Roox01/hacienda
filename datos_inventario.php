@@ -3,6 +3,11 @@
     <input type="text" class="form-control" id="codigoVaca" name="codigoVaca" placeholder="Ver otro animal" onkeypress="cargar_historial();">
 </div> 
 
+<div class="form-group col-sm-3">
+    <label for="vacas">Fecha de consulta</label>
+    <input type="date" class="form-control" id="fecha" name="fecha" placeholder="Fecha de consulta"  onchange="historial_fecha();">
+</div> 
+
 <table id="inventario_hacienda" class="table col-sm-8">
     <thead>
         <tr>

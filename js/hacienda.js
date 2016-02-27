@@ -29,6 +29,26 @@ function cargar_historial() {
 
         });
     } else {
+        $('#historial tbody ').html('');
+        $('#historial').hide();
+        $('#inventario_hacienda').show();
+
+    }
+
+}
+
+function historial_fecha() {
+    var fecha = $('#fecha').val();
+    var hacienda = $('#hacienda').val();
+    if (fecha != "") {
+        $.post("controlador/controlador_hacienda.php", {hacienda: hacienda, fecha:fecha, opcion: "historial_fecha"},
+        function (mensaje) {
+            $('#inventario_hacienda').hide();
+            $('#historial tbody ').html(mensaje);
+            $('#historial').show();
+
+        });
+    } else {
         $('#historial').hide();
         $('#inventario_hacienda').show();
 

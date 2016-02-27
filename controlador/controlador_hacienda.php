@@ -17,6 +17,9 @@ if ($opcion == "cargar_inventario") {
 if ($opcion == "cargar_historial") {
     cargar_historial();
 }
+if ($opcion == "historial_fecha") {
+    historial_fecha();
+}
 
 function cargar_hacienda() {
 
@@ -96,6 +99,45 @@ function cargar_historial() {
         $mensaje.= $mysqli->error;
     }
     if (!$sentencia->bind_param("s", $hacienda)) {
+        $mensaje.= $mysqli->error;
+    }
+
+    if ($sentencia->execute()) {
+        $sentencia->bind_result($id_vaca, $nombre, $estado, $observaciones, $fecha_consulta);
+        while ($sentencia->fetch()) {
+            $mensaje.='<tr >
+                <td >' . $id_vaca . '</td>
+                <td >' . $nombre . '</td>
+                <td >' . $estado . '</td>
+                <td >' . $observaciones . '</td>
+                <td >' . $fecha_consulta . '</td>
+                </tr>';
+        }
+    } else {
+        $mensaje.='<tr colspan="13">LA VACA NO TIENE CRÍAS</tr>';
+    }
+//    $mensaje='["juan","pedro","jacinto"]';
+    $sentencia->close();
+    $mysqli->close();
+    echo $mensaje;
+    
+}
+
+function historial_fecha() {
+    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+        die("Error al conectarse a la base de datos");
+    }
+    $mensaje = "";
+    $hacienda = $_POST['hacienda'];
+    $fecha = $_POST['fecha'];
+
+    $sql = "SELECT i.id_vaca, v.nombre, i.estado,i.observaciones,i.fecha_consulta FROM inventario i, vaca v, hacienda h "
+            . "WHERE h.nombre=? AND h.id=v.hacienda AND v.numero=i.id_vaca AND i.fecha_consulta >=?";
+
+    if (!$sentencia = $mysqli->prepare($sql)) {
+        $mensaje.= $mysqli->error;
+    }
+    if (!$sentencia->bind_param("ss", $hacienda,$fecha)) {
         $mensaje.= $mysqli->error;
     }
 
