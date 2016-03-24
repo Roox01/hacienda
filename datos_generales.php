@@ -102,13 +102,13 @@
     });
 
     function editar_vaca(item) {
-        $(this).on('blur', function () {
+        $(this).blur(function(){
             var clave = $(item).attr('id');
             var valor = $(item).val();
             var codigoVaca=<?php echo $_SESSION['vaca'];?>;
             console.log(clave+": "+valor);
             editar(clave,valor,codigoVaca,'editar_vaca');
-        });
+        })
     }
 
 
