@@ -191,13 +191,11 @@
         clasificacionFenotipo();
     });
 
-    $('#clasificacion_fenotipo input').click(function () {                
-        $(this).on('blur', function () {
+    $('#clasificacion_fenotipo input').blur(function () {                
             var clave = $(this).attr('id');
             var valor = $(this).val();
             var codigoVaca=<?php echo $_SESSION['vaca'];?>;
             console.log(clave+": "+valor);
             editar(clave,valor,codigoVaca,'editar_fenotipo');
-        });
     });
 </script>

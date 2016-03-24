@@ -91,14 +91,15 @@ function cargar_historial() {
     }
     $mensaje = "";
     $hacienda = $_POST['hacienda'];
+    $vaca = $_POST['vaca'];
 
     $sql = "SELECT c.id_vaca, v.nombre, c.estado, c.observaciones, c.fecha FROM cambios c, vaca v, hacienda h "
-            . "WHERE h.nombre=? AND h.id=v.hacienda AND v.numero=c.id_vaca";
+            . "WHERE h.nombre=? AND h.id=v.hacienda AND v.numero=c.id_vaca AND c.id_vaca=?";
 
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param("s", $hacienda)) {
+    if (!$sentencia->bind_param("ss", $hacienda, $vaca)) {
         $mensaje.= $mysqli->error;
     }
 

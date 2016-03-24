@@ -1,6 +1,6 @@
 <div class="form-group col-sm-3">
     <label for="vacas">Historial de actualizaciones por animal</label>
-    <input type="text" class="form-control" id="codigoVaca" name="codigoVaca" placeholder="Ver otro animal" onkeypress="cargar_historial();">
+    <input type="text" class="form-control" id="codigoVaca" name="codigoVaca" placeholder="Ver otro animal" onkeyup="cargar_historial();">
 </div> 
 
 <div class="form-group col-sm-3">
