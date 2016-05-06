@@ -379,3 +379,10 @@ body > div.container > div > form > table > tbody > tr > td > input:hover{
     transition-timing-function: ease;
 }
 
+#datos_reproduccion input{
+    width: 100px;
+}
+
+/*#datos_reproduccion td{
+    width: 100px;
+}*/

@@ -13,7 +13,7 @@
 </div>
 <div class="col-md-12">
     <form>
-        <table class="table-bordered table-responsive" id="datos_reproduccion" >
+        <table class="table-bordered table-responsive" id="datos_reproduccion">
             <thead>
                 <tr style="text-align: center">
                     <td class="col-md-4" colspan="3">

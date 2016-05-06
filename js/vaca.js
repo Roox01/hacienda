@@ -178,7 +178,7 @@ function editar_reproduccion(clave, id) {
         });
     }
     else {
-        $(x).focus();
+//        $(x).focus();
         $('#crias').html('Favor diligenciar el campo');
         alert('Favor diligenciar el campo');
     }
