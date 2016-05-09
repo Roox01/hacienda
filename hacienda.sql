@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-02-2016 a las 23:47:47
+-- Tiempo de generación: 24-03-2016 a las 04:55:22
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -39,9 +39,13 @@ CREATE TABLE `cambios` (
 --
 
 INSERT INTO `cambios` (`cambio`, `id_vaca`, `estado`, `observaciones`, `fecha`) VALUES
-(74, 44, 'Perdida', 'prueba 2', '2016-02-25 22:39:33'),
-(75, 44, 'Muerta', 'hola mundo\n', '2016-02-25 22:39:55'),
-(76, 44, 'Traslado', 'hola mundoprueba 3', '2016-02-25 22:46:54');
+(0, 44, 'Traslado', 'asdfah bfg dfghd h', '2016-03-24 03:10:48'),
+(1, 44, 'viva', 'prueba', '2016-03-24 03:15:35'),
+(2, 500, 'Viva', 'sdgsdfhb', '2016-03-24 03:18:47'),
+(3, 500, 'Viva', 'sdgsdfhb', '2016-03-24 03:18:47'),
+(4, 500, 'Viva', 'sdgsdfhb', '2016-03-24 03:18:47'),
+(5, 500, 'Perdida', 'sdgsdfhb', '2016-03-24 03:18:51'),
+(6, 500, 'Traslado', 'sdga ', '2016-03-24 03:18:58');
 
 -- --------------------------------------------------------
 
@@ -72,8 +76,8 @@ CREATE TABLE `cria` (
 
 INSERT INTO `cria` (`id_vaca`, `padre`, `fecha_parto`, `sexo`, `numero_cria`, `inter_parto`, `peso_nacimiento`, `fecha_destete`, `peso_destete`, `peso_205dias`, `indice1`, `peso_18meses`, `indice2`, `observaciones`) VALUES
 (33, '852', '2015-01-31', 'femenino', '0254', 'No', 30, '2016-02-01', 0, 0, '', 0, 'sano', 'colorado'),
-(44, '8987', '2016-01-01', 'femenino', '1234', '', 30, '2016-02-05', 80, 165, 'sano', 300, 'sano', 'bco cial'),
-(44, '456', '2016-01-11', 'masculino', '419-2', 'no', 30, '2016-01-05', 50, 150, 'sano', 250, 'sano', 'Bco Cial'),
+(44, '8987', '2016-01-01', 'femenino', '1234', '', 30, '2016-02-05', 65, 165, 'sano', 300, 'sano', 'bco cial'),
+(44, '456', '2016-01-11', 'masculino', '419-2', 'no', 30, '2016-01-05', 33, 150, 'sano', 250, 'sano', 'Bco Cial'),
 (12, '369', '2016-02-21', 'masculino', '852', 'no', 30, '0000-00-00', 0, 0, '', 0, '', ''),
 (33, '852', '2015-01-31', 'femenino', '898', 'No', 30, '2016-02-12', 0, 0, 'sano', 300, 'sano', 'colorado');
 
@@ -113,7 +117,7 @@ INSERT INTO `fenotipo` (`id_vaca`, `car_racial_ap_general`, `esqueleto`, `aplomo
 (12, 'qwerty', 'asdfs', 'fdf', 'fasd', 'dsf', 'sdf', '1234', 'wertgf', 'gfgfg', '1341324', 'fgh', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (33, '78', '5', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(44, 'ap general', 'esqueleto', 'aplomo', 'largo', 'a_pecho', 'a_lomo', 'a_anca', 'p_torax', 'p_calzon', 'desarrollo', 'temperamento', 'musculo', 'ap_general', 'u_pos', 'u_ant', '_pezon', 'irri', 'total'),
+(44, 'ap gen', 'esqueleto', 'aplomo', 'largo', 'a_pecho', 'a_lomo', 'a_anca', 'p_torax', 'p_calzon', 'desarrollo', 'temperamento', 'musculo', 'ap_general', 'u_pos', 'u_ant', '_pezon', 'irri', 'tot'),
 (55, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (99, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -159,14 +163,15 @@ CREATE TABLE `inventario` (
 --
 
 INSERT INTO `inventario` (`id_vaca`, `estado`, `observaciones`, `fecha_consulta`) VALUES
-(44, 'Traslado', 'hola mundoprueba 3', '2016-02-25 22:46:54');
+(44, 'viva', 'prueba', '2016-03-24 03:26:38'),
+(500, 'Traslado', 'sdga ', '2016-03-24 03:18:58');
 
 --
 -- Disparadores `inventario`
 --
 DELIMITER $$
 CREATE TRIGGER `cambios_inventario` AFTER UPDATE ON `inventario` FOR EACH ROW INSERT INTO `cambios` (`cambio`,`id_vaca`,`estado`,`observaciones`,`fecha`)
-VALUES ('',NEW.id_vaca,NEW.estado,NEW.observaciones,NEW.fecha_consulta)
+VALUES (null,NEW.id_vaca,NEW.estado,NEW.observaciones,NEW.fecha_consulta)
 $$
 DELIMITER ;
 
@@ -203,7 +208,7 @@ CREATE TABLE `reproduccion` (
 --
 
 INSERT INTO `reproduccion` (`id`, `id_vaca`, `fecha`, `toro1`, `toro2`, `fecha_1ia`, `toro_1ia`, `fecha_2ia`, `toro_2ia`, `fecha_3iamn`, `toro_3iamn`, `fecha_mn`, `toro_mn`, `fecha_1pal`, `res_1pal`, `fecha_2pal`, `res_2pal`, `fecha_3pal`, `res_3pal`) VALUES
-(1, 44, '2016-02-01', '1234', '', '2016-02-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 44, '2016-02-01', '1234', '', '2016-02-07', 'fghdhh', NULL, 'hhf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 44, '2016-02-23', '987', '987', '2016-02-23', '987', '2016-02-24', '987', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 44, '2016-02-01', '', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '');
 
@@ -260,7 +265,7 @@ INSERT INTO `vaca` (`hacienda`, `numero`, `nombre`, `registro`, `fecha_nacimient
 (1, 12, 'asdf', 12, '2014-01-01', '34', '34', '43', '43', 'fadfa adf', 0, 0, 0, '0000-00-00', 400, ''),
 (1, 22, 'cvbn', 22, '2014-01-01', '65', '65', '45', '45', 'asd56', 0, 0, 0, '0000-00-00', 0, ''),
 (1, 33, 'pulgoso', 33, '2016-01-01', '987', '987', '789', '789', 'rical', 200, 30, 310, '2016-01-13', 330, ''),
-(1, 44, 'josefa', 1234, '2015-09-06', '568', '568', '789', '789', 'colorado', 185, 50, 258, '2016-01-10', 250, ''),
+(1, 44, 'josefa', 1234, '2015-09-06', '568', '568', '789', '789', 'colorado', 185, 60, 300, '2016-01-10', 355, ''),
 (1, 55, 'hola', 55, '2013-01-02', '741', '741', '147', '147', 'qwer', 0, 0, 0, '0000-00-00', 0, ''),
 (1, 99, 'android', 99, '2016-02-01', '88', '88', '77', '77', 'poer', NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 100, 'dead', 100, '2013-01-01', '98', '98', '9', '9', 'res', 0, 0, 0, '0000-00-00', 0, ''),
@@ -342,7 +347,7 @@ ALTER TABLE `vaca`
 -- AUTO_INCREMENT de la tabla `cambios`
 --
 ALTER TABLE `cambios`
-  MODIFY `cambio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `cambio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `reproduccion`
 --
