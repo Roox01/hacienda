@@ -263,19 +263,25 @@ function traslado_vaca() {
 
     $mensaje = "";
     $vaca = $_POST['vaca'];
-    $hacienda = $_POST['hacienda'];
+    $hacienda = $_POST['haciendaDestino'];
+    $haciendaActual = $_POST['haciendaAct'];
     $id = (int) consultaIdHacienda($mysqli, $hacienda);
 
 
-    $sql = 'UPDATE `vaca` SET `hacienda`=? WHERE `vaca`.numero=?;';
+    $sql = 'UPDATE `vaca` v, `hacienda` h SET v.`hacienda`=? WHERE v.numero=? AND v.`hacienda`= h.`id` AND h.`nombre`=?';
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param('is', $id, $vaca)) {
+    if (!$sentencia->bind_param('iss', $id, $vaca, $haciendaActual)) {
         $mensaje.= $mysqli->error;
     }
     if ($sentencia->execute()) {
-        $mensaje = "Traslado de hacienda exitoso";
+        
+        if($sentencia->affected_rows>0) {
+            $mensaje = "Traslado de hacienda exitoso";
+        }else{
+            $mensaje = "la vaca no existe en esta hacienda";
+        }                
     } else {
         $mensaje = "Error para realizar un traslado";
     }
@@ -286,7 +292,7 @@ function traslado_vaca() {
 }
 
 function consultaIdHacienda($mysqli, $hacienda) {
-    $mensaje = '';
+    $mensaje = '0';    
     $sql = 'SELECT `id` FROM `hacienda` h WHERE h.nombre=?';
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje = $mysqli->error;

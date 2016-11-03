@@ -89,9 +89,11 @@ function registrar_usuario() {
 
 function traslado_de_vaca(){
     var vaca=$('#vaca').val();
-    var hacienda=$('#hacienda1').val();
+    var haciendaAct=$('#hacienda').val();
+    var haciendaDestino=$('#hacienda1').val();
+//    console.log(haciendaAct, haciendaDestino);
     if(vaca!==''){
-        $.post("controlador/controlador_hacienda.php", {vaca:vaca, hacienda: hacienda, opcion: "traslado"},
+        $.post("controlador/controlador_hacienda.php", {vaca:vaca, haciendaDestino: haciendaDestino, haciendaAct:haciendaAct, opcion: "traslado"},
         function (mensaje) {
             $('#res1').html(mensaje);
         });

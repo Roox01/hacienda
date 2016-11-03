@@ -39,12 +39,12 @@ include 'controlador/seguridadUsuarioAdmin.php';
                 <li role="presentation"><a href="./vista_usuario_1.php">Inicio</a></li>
                 <li role="presentation"><a href="?trasladar">Traslado de ganado</a></li>
                 <li role="presentation"><a href="?crear">Crear hacienda</a></li>
-                <!--<li role="presentation"><a href="?usuario">Crear Usuario</a></li>-->
+                <li role="presentation"><a href="?usuario">Crear Usuario</a></li>
             </ul>
             <?php
             $seccion = basename($_SERVER['QUERY_STRING']);
             if (empty($seccion)) {
-                include 'datos_inventario.php';
+                include 'traslados_vacas.php';
             } else {
                 $imp = 0;
                 switch ($seccion) {
@@ -56,10 +56,10 @@ include 'controlador/seguridadUsuarioAdmin.php';
                         $imp = 2;
                         include 'crear_hacienda.php';
                         break;
-//                    case 'usuario':
-//                        $imp = 2;
-//                        include 'crear_usuario.php';
-//                        break; 
+                    case 'usuario':
+                        $imp = 2;
+                        include 'crear_usuario.php';
+                        break; 
                 }
                 if ($imp === 0) {
                     echo ('No existe esta sección');
