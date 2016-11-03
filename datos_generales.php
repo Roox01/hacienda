@@ -7,7 +7,7 @@
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Nombre</strong></td>
-                <td class="col-sm-9 res"><input type="text" id="input_1" disabled></td>
+                <td class="col-sm-9 res"><input type="text" id="nombre" maxlength="30" onblur="editar_vaca('#nombre');"></td>
             </tr>
             <tr>
                 <td class="col-sm-3"><strong>Reg</strong></td>

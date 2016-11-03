@@ -1,7 +1,11 @@
 function cargar_haciendas() {
     $.post("controlador/controlador_hacienda.php", {opcion: "haciendas"},
     function (mensaje) {
-        $('#hacienda').append(mensaje);
+        var msj=mensaje;
+        $('#hacienda').append(msj);
+        $('#hacienda1').append(msj);
+        $('#hacienda2').append(msj);
+        console.log(msj);
     });
 }
 
@@ -190,8 +194,10 @@ function registrar_programa() {
     console.log(fecha);
     if (fecha !== '') {
         $.post("controlador/controlador_vaca.php", {fecha: fecha, vaca: vaca, opcion: "registrar_reproduccion"},
-        function (mensaje) {
+        function (msj) {
+            var mensaje=msj;
             $('#res_reproduccion').html(mensaje);
+            console.log(mensaje);
         });
     }
     else {

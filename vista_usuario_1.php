@@ -30,7 +30,6 @@ and open the template in the editor.
                     <a type="button" data-toggle="modal" data-target="#busquedaAnimales">
                         <div id="top_left cuadro_info">
                             <h4>ANIMALES</h4>
-                            <p>0</p>
                             <img src="./imagenes/vaca_img.png" alt="vaca" width="30%" height="30%">
                         </div>
                     </a>
@@ -39,7 +38,6 @@ and open the template in the editor.
                     <a type="button" data-toggle="modal" data-target="#busquedaReproduccion">
                         <div id="top_middle cuadro_info">
                             <h4>REPRODUCCIÓN</h4>
-                            <p>0 Hembras con preñez confirmada</p>
                             <img id="imagen_repro" src="./imagenes/reproduccion.png" alt="Reprodución" width="20%" height="20%" style="visibility: hidden">
                         </div>
                     </a>
@@ -64,8 +62,16 @@ and open the template in the editor.
                         </div>
                     </a>
                 </div>
+                <div class="col-lg-4" style="border: 10px">
+                    <a href="traslados.php" id="registro">
+                        <div id="cuadro_info">
+                            <h4>HACIENDA Y TRASLADOS</h4>
+                            <p></p>
+                            <img src="./imagenes/traslado.png" alt="traslado" width="25%" height="25%">
+                        </div>
+                    </a>
+                </div>
             </div>
-
         </div>
 
         <!-- Modal -->
