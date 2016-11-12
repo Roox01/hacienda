@@ -19,3 +19,4 @@ function Conectarse() {
 $link = Conectarse();
 mysqli_close($link); //cierra la conexion
 ?>
+
