@@ -113,7 +113,7 @@ function cargar_historial() {
     $vaca = $_POST['vaca'];
 
     $sql = "SELECT c.id_vaca, v.nombre, c.estado, c.observaciones, c.fecha FROM cambios c, vaca v, hacienda h "
-            . "WHERE h.nombre='$hacienda' AND h.id=v.hacienda AND v.numero=c.id_vaca AND c.id_vaca COLLATE latin1_swedish_ci LIKE '%$vaca%'";
+            . "WHERE h.nombre='$hacienda' AND h.id=v.hacienda AND v.numero=c.id_vaca AND c.id_vaca COLLATE utf8_unicode_ci LIKE '%$vaca%'";
 
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje = $mysqli->error;
