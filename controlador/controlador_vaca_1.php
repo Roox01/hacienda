@@ -191,7 +191,7 @@ function registrar() {
     $foto = "";
     $observaciones = "";
 
-    $mensaje=insertarVaca($conexion, $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $hacienda);
+    $mensaje = insertarVaca($conexion, $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $hacienda);
     $conexion->close();
     echo $mensaje;
 }
@@ -211,7 +211,7 @@ function registrar() {
 
 
 function insertarVaca($conexion, $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $hacienda) {
-    $mensaje='';
+    $mensaje = '';
     $sql = "INSERT INTO `vaca`(`hacienda`, `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`, `padre_registro`, `madre_numero`, "
             . "`madre_registro`, `clasificacion`, `peso_205dias`, `altura_sacro_destete`, `peso_18meses`, `fecha_entrada_toro`, "
             . "`peso_entrada_toro`, `foto`) "
@@ -230,7 +230,7 @@ function insertarVaca($conexion, $numero, $nombre, $registro, $fecha_nacimiento,
         $mensaje = "Error al registrar una nueva vaca. <br> La vaca se encuentra creada en la base de datos";
     }
 
-    $sentencia->close();    
+    $sentencia->close();
     echo $mensaje;
 }
 

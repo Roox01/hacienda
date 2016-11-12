@@ -220,11 +220,11 @@ function registrar() {
 
     if ($sentencia->execute()) {
         $mensaje.= "Vaca registrada con éxito<br>";
-        if(!crearInventario($conexion, $numero)){
+        if (!crearInventario($conexion, $numero)) {
             $mensaje.= "La vaca no está en el inventario actual";
-        }else{
+        } else {
             $mensaje.="Vaca registrada en el inventario";
-        }        
+        }
     } else {
         $mensaje .= "Error al registrar una nueva vaca. <br> La vaca se encuentra creada en la base de datos";
     }
@@ -241,9 +241,9 @@ function crearInventario($conexion, $numero) {
     $fechaSistema = date('Y-m-d H:i:s', time());
     $sql = "INSERT INTO `inventario`(`id_vaca`,`estado`,`observaciones`,`fecha_consulta`) VALUES ('$numero','viva','Creada en el inventario','$fechaSistema')";
     if (mysqli_query($conexion, $sql)) {
-        $mensaje=true;
+        $mensaje = true;
     } else {
-        $mensaje=false;
+        $mensaje = false;
     }
     return $mensaje;
 }
