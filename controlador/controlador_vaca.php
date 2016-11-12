@@ -55,6 +55,13 @@ if ($opcion == "actualizar_inventario") {
 }
 
 function datos_generales() {
+    //Conexion a la BD haciendalasonora.com
+    //mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda");
+    
+    //Conexion a la BD local
+    //mysqli("localhost","root","","hacienda");
+    
+    
     if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
         die("Error al conectarse a la base de datos");
     }

@@ -55,7 +55,14 @@ if ($opcion == "actualizar_inventario") {
 }
 
 function datos_generales() {
-    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+    //Conexion a la BD haciendalasonora.com
+    //mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda");
+    
+    //Conexion a la BD local
+    //mysqli("localhost","root","","hacienda");
+    
+    
+    if (!$mysqli = new mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda")) {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
@@ -70,7 +77,7 @@ function datos_generales() {
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param("is", $codigo_vaca, $hacienda)) {
+    if (!$sentencia->bind_param("ss", $codigo_vaca, $hacienda)) {
         $mensaje.= $mysqli->error;
     }
     if ($sentencia->execute()) {
@@ -87,7 +94,7 @@ function datos_generales() {
 }
 
 function clasificacion_fenotipo() {
-    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+    if (!$mysqli = new mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda")) {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
@@ -102,7 +109,7 @@ function clasificacion_fenotipo() {
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param("is", $codigo_vaca, $hacienda)) {
+    if (!$sentencia->bind_param("ss", $codigo_vaca, $hacienda)) {
         $mensaje.= $mysqli->error;
     }
 
@@ -121,7 +128,7 @@ function clasificacion_fenotipo() {
 }
 
 function cargar_crias() {
-    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+    if (!$mysqli = new mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda")) {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
@@ -135,7 +142,7 @@ function cargar_crias() {
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param("is", $codigo_vaca, $hacienda)) {
+    if (!$sentencia->bind_param("ss", $codigo_vaca, $hacienda)) {
         $mensaje.= $mysqli->error;
     }
 
@@ -169,7 +176,7 @@ function cargar_crias() {
 }
 
 function registrar() {
-    if (!$conexion = new mysqli("localhost", "root", "", "hacienda")) {
+    if (!$conexion = new mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda")) {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
@@ -191,10 +198,6 @@ function registrar() {
     $foto = "";
     $observaciones = "";
 
-    $mensaje = insertarVaca($conexion, $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $hacienda);
-    $conexion->close();
-    echo $mensaje;
-}
 
 //    $sql = "INSERT INTO `vaca` (`hacienda`, `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`,"
 //            . " `padre_registro`, `madre_numero`, `madre_registro`, `clasificacion`, `peso_205dias`, `altura_sacro_destete`,"
@@ -210,8 +213,7 @@ function registrar() {
 //    echo $mensaje;
 
 
-function insertarVaca($conexion, $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $hacienda) {
-    $mensaje = '';
+
     $sql = "INSERT INTO `vaca`(`hacienda`, `numero`, `nombre`, `registro`, `fecha_nacimiento`, `padre_numero`, `padre_registro`, `madre_numero`, "
             . "`madre_registro`, `clasificacion`, `peso_205dias`, `altura_sacro_destete`, `peso_18meses`, `fecha_entrada_toro`, "
             . "`peso_entrada_toro`, `foto`) "
@@ -219,18 +221,23 @@ function insertarVaca($conexion, $numero, $nombre, $registro, $fecha_nacimiento,
     if (!$sentencia = $conexion->prepare($sql)) {
         $mensaje.= $conexion->error;
     }
-    if (!$sentencia->bind_param("isisiiiisiiisiss", $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $hacienda)) {
+    if (!$sentencia->bind_param("ssisiiiisiiisiss", $numero, $nombre, $registro, $fecha_nacimiento, $padre_numero, $padre_registro, $madre_numero, $madre_registro, $clasificacion, $peso_205dias, $altura_sacro_destete, $peso_18meses, $fecha_entrada_toro, $peso_entrada_toro, $foto, $hacienda)) {
         $mensaje.= $conexion->error;
     }
 
     if ($sentencia->execute()) {
-        $mensaje.= crearInventario($conexion, $numero);
-        $mensaje.= "Vaca registrada con éxito";
+        $mensaje.= "Vaca registrada con éxito<br>";
+        if (!crearInventario($conexion, $numero)) {
+            $mensaje.= "La vaca no está en el inventario actual";
+        } else {
+            $mensaje.="Vaca registrada en el inventario";
+        }
     } else {
-        $mensaje = "Error al registrar una nueva vaca. <br> La vaca se encuentra creada en la base de datos";
+        $mensaje .= "Error al registrar una nueva vaca. <br> La vaca se encuentra creada en la base de datos";
     }
 
     $sentencia->close();
+    $conexion->close();
     echo $mensaje;
 }
 
@@ -239,17 +246,17 @@ function crearInventario($conexion, $numero) {
     //Zona horaria
     date_default_timezone_set('America/Bogota');
     $fechaSistema = date('Y-m-d H:i:s', time());
-    $sql = "INSERT INTO `inventario`(`id_vaca`,`estado`,`observaciones`,`fecha_consulta`) VALUES ($numero,'viva','Creada en el inventario',$fechaSistema)";
+    $sql = "INSERT INTO `inventario`(`id_vaca`,`estado`,`observaciones`,`fecha_consulta`) VALUES ('$numero','viva','Creada en el inventario','$fechaSistema')";
     if (mysqli_query($conexion, $sql)) {
-        $mensaje.='Registrada en inventario automáticamente';
+        $mensaje = true;
     } else {
-        $mensaje.='Actualmente se encuentra creado en inventario';
+        $mensaje = false;
     }
-    echo $mensaje;
+    return $mensaje;
 }
 
 function registrarCria() {
-    if (!$conexion = new mysqli("localhost", "root", "", "hacienda")) {
+    if (!$conexion = new mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda")) {
         die("Error al conectarse a la base de datos");
     }
     $hacienda = $_SESSION['hacienda'];
@@ -278,12 +285,11 @@ function registrarCria() {
     if (!$sentencia = $conexion->prepare($sql)) {
         $mensaje.= $conexion->error;
     }
-    if (!$sentencia->bind_param("issssisiisissis", $padre, $fecha_parto, $sexo, $numero_cria, $inter_parto, $peso_nacimiento, $fecha_destete, $peso_destete, $peso_205dias, $indice1, $peso_18meses, $indice2, $observaciones, $id_vaca, $hacienda)) {
+    if (!$sentencia->bind_param("issssisiisissss", $padre, $fecha_parto, $sexo, $numero_cria, $inter_parto, $peso_nacimiento, $fecha_destete, $peso_destete, $peso_205dias, $indice1, $peso_18meses, $indice2, $observaciones, $id_vaca, $hacienda)) {
         $mensaje.= $conexion->error;
     }
 
     if ($sentencia->execute()) {
-        insertarVaca($conexion, $numero_cria, 'Sin nombre', $numero_cria, $fecha_parto, $padre, $padre, $id_vaca, $id_vaca, 'Sin clasif', $peso_205dias, '', '', '', '', '', $hacienda);
         $mensaje = "Cría registrada con éxito";
     } else {
         $mensaje = "Error al registrar una nueva cría" . $sentencia->error;
@@ -295,7 +301,7 @@ function registrarCria() {
 }
 
 function editarCria() {
-    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+    if (!$mysqli = new mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda")) {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
@@ -332,7 +338,7 @@ function editarCria() {
 }
 
 function editarFenotipo() {
-    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+    if (!$mysqli = new mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda")) {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
@@ -360,7 +366,7 @@ function editarFenotipo() {
 }
 
 function editarVaca() {
-    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+    if (!$mysqli = new mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda")) {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
@@ -397,7 +403,7 @@ function editarVaca() {
 }
 
 function cargarReproduccion() {
-    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+    if (!$mysqli = new mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda")) {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
@@ -411,7 +417,7 @@ function cargarReproduccion() {
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param("is", $codigo_vaca, $hacienda)) {
+    if (!$sentencia->bind_param("ss", $codigo_vaca, $hacienda)) {
         $mensaje.= $mysqli->error;
     }
 
@@ -491,7 +497,7 @@ function cargarReproduccion() {
 }
 
 function editarReproduccion() {
-    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+    if (!$mysqli = new mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda")) {
         die("Error al conectarse a la base de datos");
     }
     $mensaje = "";
@@ -520,7 +526,7 @@ function editarReproduccion() {
 }
 
 function registrarReproduccion() {
-    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+    if (!$mysqli = new mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda")) {
         die("Error al conectarse a la base de datos");
     }
 
@@ -551,14 +557,14 @@ function registrarReproduccion() {
 }
 
 function actualizarInventario() {
-    if (!$mysqli = new mysqli("localhost", "root", "", "hacienda")) {
+    if (!$mysqli = new mysqli("localhost", "hacienda_6LX3182AWQIR", "6LX3182AWQIR", "hacienda_hacienda")) {
         die("Error al conectarse a la base de datos");
     }
 
     $mensaje = "";
     $estado = $_POST['estado'];
     $observaciones = $_POST['observaciones'];
-    $vaca = (int) $_POST['vaca'];
+    $vaca = $_POST['vaca'];
     $hacienda = $_SESSION['hacienda'];
 
     $sql = "UPDATE `inventario` i, vaca v, hacienda h SET `estado`=?,`observaciones`=? WHERE id_vaca=? AND id_vaca=v.numero and v.hacienda=h.id and h.nombre=?;";
@@ -566,7 +572,7 @@ function actualizarInventario() {
     if (!$sentencia = $mysqli->prepare($sql)) {
         $mensaje.= $mysqli->error;
     }
-    if (!$sentencia->bind_param('sss', $estado, $observaciones, $vaca, $hacienda)) {
+    if (!$sentencia->bind_param('ssss', $estado, $observaciones, $vaca, $hacienda)) {
         $mensaje.= $mysqli->error;
     }
     if ($sentencia->execute()) {
